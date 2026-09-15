@@ -141,6 +141,187 @@
     </div>
   </div>
 
+  <!-- GLOBE -->
+  <style>
+    #globe-wrap {
+      margin: 8px 40px 32px; border-radius: 18px; overflow: hidden;
+      background: #050510; position: relative;
+    }
+    #globe-el { width: 100%; display: flex; align-items: center; justify-content: center; }
+    #globe-el svg { cursor: grab; display: block; }
+    #globe-el svg.dragging { cursor: grabbing; }
+    #globe-tooltip {
+      position: absolute; background: #2a2d45; color: #EEE7EF;
+      font-family: 'Inter', sans-serif; font-size: 11px;
+      padding: 10px 14px; border-radius: 10px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4); max-width: 240px; line-height: 1.6;
+      pointer-events: none; display: none; z-index: 10;
+    }
+    #globe-tooltip strong { display: block; font-size: 11px; color: #DDB5B6; margin-bottom: 4px; font-weight: 500; }
+  </style>
+  <div id="globe-wrap">
+    <div id="globe-el"></div>
+    <div id="globe-tooltip"></div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+  <script>
+  (function() {
+    var journeyPoints = [
+      { coords: [-122.3321, 47.6062], label: 'Seattle, WA — USA',
+        desc: 'This is where I was born and lived for the majority of my life. More importantly, this is where my ever growing love for the nature and the sea originated. My childhood consisted of traveling, sailing, skiing, hiking, biking, and playing tons of soccer.' },
+      { coords: [8.8017, 53.0793], label: 'Bremen, Germany — 2019–2020',
+        desc: 'Rotary Youth Exchange at 16–17, living with host families. Practiced German and got my first taste of living abroad.' },
+      { coords: [11.2558, 43.7696], label: 'Florence, Italy — 2021',
+        desc: 'VERTO university semester. Courses in Statistics, Art History, and Sociology. First step into higher education abroad after COVID.' },
+      { coords: [-83.6833, 9.9000], label: 'Turrialba, Costa Rica — 2022',
+        desc: 'VERTO semester at an agricultural research institute. Studied ecology, comparative politics, and began learning Spanish. Traveled all over the country.' },
+      { coords: [14.4378, 50.0755], label: 'Prague, Czech Republic — 2022–2025',
+        desc: 'BSc in Environmental Data Science at Czech University of Life Sciences. Courses in ecology, hydrology, GIS, and data visualization. Thesis on flood and ET dynamics.' },
+      { coords: [5.6651, 51.9685], label: 'Wageningen, Netherlands — 2025–present',
+        desc: 'MSc in Geo-Information Sciences at Wageningen University & Research. Remote Sensing, ML, Deep Learning, Geoscripting. Consultancy with Antea Group on airborne LiDAR obstacle detection.' },
+    ];
+
+    var wrap = document.getElementById('globe-el');
+    var tooltip = document.getElementById('globe-tooltip');
+    // Fixed coordinate space; SVG scales via viewBox to fill container
+    var W = 800, H = 500, R = 230;
+
+    var projection = d3.geoOrthographic()
+      .scale(R)
+      .translate([W / 2, H / 2])
+      .clipAngle(90)
+      .rotate([10, -25, 0]);
+
+    var path = d3.geoPath().projection(projection);
+
+    var svg = d3.select('#globe-el').append('svg')
+      .attr('viewBox', '0 0 ' + W + ' ' + H)
+      .attr('width', '100%')
+      .style('max-height', '500px');
+
+    // Outer space background
+    svg.append('rect').attr('width', W).attr('height', H).attr('fill', '#050510');
+
+    // Ocean
+    svg.append('circle')
+      .attr('cx', W / 2).attr('cy', H / 2).attr('r', R)
+      .attr('fill', '#0d1b3e');
+
+    // Graticule
+    var graticule = d3.geoGraticule()();
+    var gratPath = svg.append('path')
+      .datum(graticule)
+      .attr('fill', 'none')
+      .attr('stroke', '#132450')
+      .attr('stroke-width', 0.6)
+      .attr('d', path);
+
+    // Land
+    var landPath = svg.append('path')
+      .attr('fill', '#1e3d6e')
+      .attr('stroke', '#2d5a9e')
+      .attr('stroke-width', 0.5);
+
+    // Dots (rendered after land so they appear on top)
+    var dotsG = svg.append('g');
+
+    function isVisible(coords) {
+      var rot = projection.rotate();
+      return d3.geoDistance(coords, [-rot[0], -rot[1]]) < Math.PI / 2;
+    }
+
+    function redraw() {
+      gratPath.attr('d', path);
+      landPath.attr('d', path);
+      dotsG.selectAll('.dot-glow, .dot-main').each(function(d) {
+        var p = projection(d.coords);
+        var vis = isVisible(d.coords);
+        d3.select(this).attr('cx', p[0]).attr('cy', p[1])
+          .attr('display', vis ? null : 'none');
+      });
+    }
+
+    // Drag to rotate
+    var dragOrigin = null, rotOrigin = null;
+    svg.on('mousedown', function(event) {
+      if (event.target.classList.contains('dot-main')) return;
+      dragOrigin = [event.clientX, event.clientY];
+      rotOrigin = projection.rotate().slice();
+      svg.classed('dragging', true);
+    });
+    d3.select(document)
+      .on('mousemove.globe', function(event) {
+        if (!dragOrigin) return;
+        var dx = event.clientX - dragOrigin[0];
+        var dy = event.clientY - dragOrigin[1];
+        projection.rotate([
+          rotOrigin[0] + dx * 0.35,
+          Math.max(-80, Math.min(80, rotOrigin[1] - dy * 0.35)),
+          rotOrigin[2]
+        ]);
+        redraw();
+      })
+      .on('mouseup.globe', function() {
+        dragOrigin = null;
+        svg.classed('dragging', false);
+      });
+
+    // Load world topology
+    fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+      .then(function(r) { return r.json(); })
+      .then(function(world) {
+        landPath.datum(topojson.feature(world, world.objects.land));
+        redraw();
+
+        // Glow rings
+        dotsG.selectAll('.dot-glow').data(journeyPoints).enter()
+          .append('circle').attr('class', 'dot-glow')
+          .attr('r', 13)
+          .attr('fill', '#FB2C36')
+          .attr('opacity', 0.22)
+          .each(function(d) {
+            var p = projection(d.coords);
+            d3.select(this).attr('cx', p[0]).attr('cy', p[1])
+              .attr('display', isVisible(d.coords) ? null : 'none');
+          });
+
+        // Dots
+        dotsG.selectAll('.dot-main').data(journeyPoints).enter()
+          .append('circle').attr('class', 'dot-main')
+          .attr('r', 7)
+          .attr('fill', '#ffffff')
+          .attr('stroke', '#FB2C36')
+          .attr('stroke-width', 2)
+          .style('cursor', 'pointer')
+          .each(function(d) {
+            var p = projection(d.coords);
+            d3.select(this).attr('cx', p[0]).attr('cy', p[1])
+              .attr('display', isVisible(d.coords) ? null : 'none');
+          })
+          .on('mouseenter', function(event, d) {
+            var rect = document.getElementById('globe-wrap').getBoundingClientRect();
+            var x = event.clientX - rect.left;
+            var y = event.clientY - rect.top;
+            var left = (x + 16 + 250 > wrap.offsetWidth) ? x - 264 : x + 16;
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = Math.max(8, y - 10) + 'px';
+            tooltip.innerHTML = '<strong>' + d.label + '</strong>' + d.desc;
+            tooltip.style.display = 'block';
+          })
+          .on('mousemove', function(event) {
+            var rect = document.getElementById('globe-wrap').getBoundingClientRect();
+            var x = event.clientX - rect.left;
+            var y = event.clientY - rect.top;
+            var left = (x + 16 + 250 > wrap.offsetWidth) ? x - 264 : x + 16;
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = Math.max(8, y - 10) + 'px';
+          })
+          .on('mouseleave', function() { tooltip.style.display = 'none'; });
+      });
+  })();
+  </script>
+
   <!-- TIMELINE -->
   <div class="tl-wrap">
     <div class="section-header">Education &amp; Experience</div>
