@@ -145,7 +145,7 @@
   <style>
     #globe-wrap {
       margin: 8px 40px 32px; border-radius: 18px; overflow: hidden;
-      background: #050510; position: relative;
+      background: #ffffff; position: relative;
     }
     #globe-el { width: 100%; display: flex; align-items: center; justify-content: center; }
     #globe-el svg { cursor: grab; display: block; }
@@ -200,27 +200,27 @@
       .attr('width', '100%')
       .style('max-height', '500px');
 
-    // Outer space background
-    svg.append('rect').attr('width', W).attr('height', H).attr('fill', '#050510');
+    // White background
+    svg.append('rect').attr('width', W).attr('height', H).attr('fill', '#ffffff');
 
     // Ocean
     svg.append('circle')
       .attr('cx', W / 2).attr('cy', H / 2).attr('r', R)
-      .attr('fill', '#0d1b3e');
+      .attr('fill', '#C7E5FF');
 
     // Graticule
     var graticule = d3.geoGraticule()();
     var gratPath = svg.append('path')
       .datum(graticule)
       .attr('fill', 'none')
-      .attr('stroke', '#132450')
+      .attr('stroke', '#a8d4f0')
       .attr('stroke-width', 0.6)
       .attr('d', path);
 
     // Land
     var landPath = svg.append('path')
-      .attr('fill', '#1e3d6e')
-      .attr('stroke', '#2d5a9e')
+      .attr('fill', '#93AB9F')
+      .attr('stroke', '#7a9490')
       .attr('stroke-width', 0.5);
 
     // Dots (rendered after land so they appear on top)
