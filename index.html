@@ -9,90 +9,87 @@
   @import url('https://fonts.googleapis.com/css2?family=Shrikhand&family=Inter:wght@300;400;500&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  html, body { width: 100%; min-height: 100vh; margin: 0; padding: 0; }
-  .c { font-family: 'Inter', sans-serif; background: #fff; color: #333; width: 100%; }
+  html, body { width: 100%; min-height: 100vh; margin: 0; padding: 0; background: #0d1526; }
+  .c { font-family: 'Inter', sans-serif; background: #0d1526; color: #EEE7EF; width: 100%; }
 
+  /* NAV */
   .nav { display: flex; justify-content: center; padding: 14px 40px; position: sticky; top: 16px; z-index: 50; }
-  .nav-inner { display: flex; gap: 32px; font-size: 12px; color: #9C7894; background: rgba(255,255,255,0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 40px; padding: 10px 28px; box-shadow: 0 2px 18px rgba(85,89,124,0.10); border: 0.5px solid rgba(200,206,238,0.5); }
-  .nav-inner a { color: #9C7894; text-decoration: none; transition: color 0.15s; }
-  .nav-inner a:hover { color: #55597C; }
+  .nav-inner { display: flex; gap: 32px; font-size: 12px; background: rgba(13,21,38,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 40px; padding: 10px 28px; box-shadow: 0 2px 18px rgba(0,0,0,0.35); border: 0.5px solid rgba(100,150,220,0.2); }
+  .nav-inner a { color: #9eadc8; text-decoration: none; transition: color 0.15s; }
+  .nav-inner a:hover { color: #EEE7EF; }
 
-  .hero { padding: 56px 40px 28px; position: relative; z-index: 1; }
-  .hero-title { font-family: 'Shrikhand', serif; font-size: 82px; line-height: 0.95; color: #55597C; margin-bottom: 20px; }
-  .hero-bio { font-size: 12px; color: #777A9D; line-height: 1.75; max-width: 420px; }
+  /* HERO */
+  .hero-new { display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 70px); padding: 60px; gap: 0; }
+  .hero-left { flex: 1; display: flex; align-items: center; justify-content: flex-end; padding-right: 52px; }
+  .hero-title { font-family: 'Shrikhand', serif; font-size: 72px; line-height: 1.05; color: #EEE7EF; text-align: right; }
+  .hero-globe-col { flex: 0 0 42%; max-width: 540px; position: relative; }
+  .hero-right { flex: 1; display: flex; align-items: center; justify-content: flex-start; padding-left: 52px; }
+  .hero-bio { font-size: 13px; color: #9eadc8; line-height: 1.85; max-width: 300px; }
 
-  .bubbles { position: relative; height: clamp(480px, 40vw, 760px); margin-top: -140px; margin-bottom: 32px; overflow: hidden; }
-  .bubble-l { position: absolute; inset: 0; overflow: hidden; }
-  .bubble-l img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 25%, black 55%); mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.4) 25%, black 55%); }
-  .bubble-r { position: absolute; right: 0; top: 0; bottom: 0; width: 38%; display: flex; align-items: center; justify-content: center; }
-  .bubble-r img { height: 100%; width: 100%; object-fit: contain; transform: scale(1.6) translate(21.8%, -16.8%); }
+  /* SECTION HEADER */
+  .section-header { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: #C78A9A; margin-bottom: 16px; }
 
   /* MAP */
-  .map-section { margin: 0 0 16px; }
-  .section-header { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: #55597C; margin-bottom: 16px; }
+  .map-section { margin: 0 0 16px; padding-top: 72px; }
   .map-wrap { position: relative; aspect-ratio: 2.8 / 1; }
   .map-img-clip { border-radius: 18px; overflow: hidden; position: absolute; inset: 0; }
   .map-img-clip img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
 
   .mdot { position: absolute; width: 11px; height: 11px; border-radius: 50%; background: #FB2C36; border: 2px solid #fff; cursor: pointer; z-index: 2; }
   .tooltip {
-    display: none;
-    position: absolute;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #2a2d45;
-    color: #EEE7EF;
-    font-size: 10px;
-    font-family: 'Inter', sans-serif;
-    padding: 8px 12px;
-    border-radius: 8px;
-    pointer-events: none;
-    z-index: 100;
-    line-height: 1.6;
-    width: 200px;
-    white-space: normal;
+    display: none; position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+    background: #111d33; color: #EEE7EF; font-size: 10px; font-family: 'Inter', sans-serif;
+    padding: 8px 12px; border-radius: 8px; pointer-events: none; z-index: 100;
+    line-height: 1.6; width: 200px; white-space: normal; border: 0.5px solid #2a3d6a;
   }
   .tooltip strong { display: block; font-size: 11px; color: #DDB5B6; margin-bottom: 3px; font-weight: 500; }
   .mdot:hover .tooltip { display: block; }
   .mdot:hover { background: #FEE2D7; }
 
   /* TIMELINE */
-  .tl-wrap { margin: 0 40px 48px; }
-
-  .tl-node-label { text-align: center; padding: 0 3px; }
-  .tl-node-org { font-size: 11px; font-weight: 500; color: #55597C; line-height: 1.3; }
-  .tl-node-period { font-size: 10px; color: #9C7894; margin-top: 2px; }
-  .tl-node-desc { font-size: 10px; color: #9C7894; margin-top: 2px; line-height: 1.4; }
+  .tl-wrap { margin: 0 40px 48px; padding-top: 60px; }
 
   /* PROJECTS */
-  .projects { margin: 0 40px 40px; }
+  .projects { margin: 0 40px 40px; padding-top: 60px; }
   .proj-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; align-items: start; }
-  .proj-card { border-radius: 14px; overflow: hidden; border: 0.5px solid #e8e8e8; cursor: pointer; transition: box-shadow 0.2s; }
-  .proj-card:hover { box-shadow: 0 4px 20px rgba(85,89,124,0.1); }
-  .proj-img { background: #EEE7EF; }
+  .proj-card { border-radius: 14px; overflow: hidden; border: 0.5px solid #1e3058; cursor: pointer; transition: box-shadow 0.2s; background: #111d33; }
+  .proj-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.5); }
+  .proj-img { background: #1a2d4a; }
   .proj-img img { width: 100%; height: auto; display: block; }
   .proj-body { padding: 14px; }
-  .proj-course { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #9C7894; }
-  .proj-title { font-size: 13px; font-weight: 500; color: #55597C; margin-top: 4px; line-height: 1.4; }
-  .proj-link { font-size: 11px; color: #BCA8C1; margin-top: 8px; }
-  .proj-desc { font-size: 11px; color: #888; margin-top: 6px; line-height: 1.5; }
+  .proj-course { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #C78A9A; }
+  .proj-title { font-size: 13px; font-weight: 500; color: #EEE7EF; margin-top: 4px; line-height: 1.4; }
+  .proj-link { font-size: 11px; color: #9eadc8; margin-top: 8px; }
+  .proj-desc { font-size: 11px; color: #6e80a0; margin-top: 6px; line-height: 1.5; }
 
-  .skills { margin: 0 40px 40px; padding: 22px 24px; background: #EEE7EF; border-radius: 16px; }
+  /* SKILLS */
+  .skills { margin: 0 40px 40px; padding: 22px 24px; background: #111d33; border-radius: 16px; border: 0.5px solid #1e3058; }
   .skill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .stag { background: #fff; color: #55597C; font-size: 12px; padding: 5px 14px; border-radius: 20px; border: 0.5px solid #C8CEEE; }
-  .stag.rs { background: #C8CEEE; border-color: #BCA8C1; }
+  .stag { background: #1a2d4a; color: #9eadc8; font-size: 12px; padding: 5px 14px; border-radius: 20px; border: 0.5px solid #2a3d6a; }
+  .stag.rs { background: #221a30; color: #C78A9A; border-color: #3d2a4a; }
 
-  .contact { margin: 0 40px 40px; background: #55597C; border-radius: 16px; padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; }
+  /* CONTACT */
+  .contact { margin: 0 40px 40px; background: #111d33; border-radius: 16px; padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; border: 0.5px solid #1e3058; }
   .contact-h { font-family: 'Shrikhand', serif; font-size: 28px; color: #EEE7EF; }
-  .contact-s { font-size: 12px; color: #BCA8C1; margin-top: 5px; }
+  .contact-s { font-size: 12px; color: #9eadc8; margin-top: 5px; }
   .btn-row { display: flex; gap: 10px; }
-  .cbtn { background: #EEE7EF; color: #55597C; font-size: 12px; font-weight: 500; padding: 9px 20px; border-radius: 20px; border: none; font-family: inherit; cursor: pointer; text-decoration: none; display: inline-block; }
+  .cbtn { background: #EEE7EF; color: #0d1526; font-size: 12px; font-weight: 500; padding: 9px 20px; border-radius: 20px; border: none; font-family: inherit; cursor: pointer; text-decoration: none; display: inline-block; }
+
+  /* GLOBE */
+  #globe-wrap { position: relative; }
+  #globe-el { width: 100%; display: flex; align-items: center; justify-content: center; }
+  #globe-el svg { cursor: grab; display: block; }
+  #globe-el svg.dragging { cursor: grabbing; }
+  #globe-tooltip {
+    position: absolute; background: #111d33; color: #EEE7EF;
+    font-family: 'Inter', sans-serif; font-size: 11px; padding: 10px 14px;
+    border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    max-width: 240px; line-height: 1.6; pointer-events: none; display: none;
+    z-index: 10; border: 0.5px solid #2a3d6a;
+  }
+  #globe-tooltip strong { display: block; font-size: 11px; color: #DDB5B6; margin-bottom: 4px; font-weight: 500; }
+
   #about, #map, #projects, #skills, #contact { scroll-margin-top: 80px; }
-  #photo-readout { display: none; }
-  #photo-readout.visible { display: block; }
-  .photo-drag-mode { cursor: grab !important; outline: 2px dashed #DDB5B6; outline-offset: -4px; }
-  .photo-drag-mode:active { cursor: grabbing !important; }
 </style>
 
 <div class="c">
@@ -102,24 +99,30 @@
     </div>
   </nav>
 
-  <div class="hero" id="about">
-    <div class="hero-title">Hi,<br>I'm Sophia</div>
-    <p class="hero-bio">A geospatial data scientist looking to contribute positivity and change to the world around me, one map at a time! Currently studying a Master&rsquo;s in Geo-Information Science at Wageningen University and excited to see where it takes me.</p>
-  </div>
-
-  <div class="bubbles">
-    <div class="bubble-l"><img src="Design/mountains.JPG" alt="mountains" /></div>
-    <div class="bubble-r"><img src="Design/me_pointing_left_transparent.png" alt="Sophia" /></div>
+  <!-- HERO -->
+  <div class="hero-new" id="about">
+    <div class="hero-left">
+      <div class="hero-title">Hi,<br>I&rsquo;m<br>Sophia</div>
+    </div>
+    <div class="hero-globe-col">
+      <div id="globe-wrap">
+        <div id="globe-el"></div>
+        <div id="globe-tooltip"></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <p class="hero-bio">A geospatial data scientist looking to contribute positivity and change to the world around me, one map at a time! Currently studying a Master&rsquo;s in Geo-Information Science at Wageningen University and excited to see where it takes me.</p>
+    </div>
   </div>
 
   <!-- MAP -->
   <div class="map-section" id="map">
-    <div class="section-header" style="text-align: center; font-size: 18px; color: #C78A9A;">My Journey</div>
+    <div class="section-header" style="text-align: center; font-size: 18px;">My Journey</div>
     <div class="map-wrap">
       <div class="map-img-clip"><img src="Design/transparent_map_no_antartica.png" alt="world map" /></div>
       <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;" viewBox="0 0 100 100" preserveAspectRatio="none">
         <polyline points="16.9,24.3 52.1,20.7 52.9,27.8 27.2,52.7 53.7,22.4 51.2,20.3"
-          fill="none" stroke="#000" stroke-width="1.5" stroke-dasharray="1.2,0.8" vector-effect="non-scaling-stroke" opacity="0.7"/>
+          fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="1.2,0.8" vector-effect="non-scaling-stroke" opacity="0.5"/>
       </svg>
       <div class="mdot" style="top:24.3%; left:16.9%;">
         <div class="tooltip"><strong>Seattle, WA &mdash; USA</strong>This is where I was born and lived for the majority of my life. More importantly, this is where my ever growing love for the nature and the sea originated. My childhood consisted of traveling, sailing, skiing, hiking, biking, and playing tons of soccer.</div>
@@ -142,211 +145,30 @@
     </div>
   </div>
 
-  <!-- GLOBE -->
-  <style>
-    #globe-wrap {
-      margin: 8px 40px 32px; border-radius: 18px; overflow: hidden;
-      background: #ffffff; position: relative;
-    }
-    #globe-el { width: 100%; display: flex; align-items: center; justify-content: center; }
-    #globe-el svg { cursor: grab; display: block; }
-    #globe-el svg.dragging { cursor: grabbing; }
-    #globe-tooltip {
-      position: absolute; background: #2a2d45; color: #EEE7EF;
-      font-family: 'Inter', sans-serif; font-size: 11px;
-      padding: 10px 14px; border-radius: 10px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.4); max-width: 240px; line-height: 1.6;
-      pointer-events: none; display: none; z-index: 10;
-    }
-    #globe-tooltip strong { display: block; font-size: 11px; color: #DDB5B6; margin-bottom: 4px; font-weight: 500; }
-  </style>
-  <div id="globe-wrap">
-    <div id="globe-el"></div>
-    <div id="globe-tooltip"></div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
-  <script>
-  (function() {
-    var journeyPoints = [
-      { coords: [-122.3321, 47.6062], label: 'Seattle, WA — USA',
-        desc: 'This is where I was born and lived for the majority of my life. More importantly, this is where my ever growing love for the nature and the sea originated. My childhood consisted of traveling, sailing, skiing, hiking, biking, and playing tons of soccer.' },
-      { coords: [8.8017, 53.0793], label: 'Bremen, Germany — 2019–2020',
-        desc: 'Rotary Youth Exchange at 16–17, living with host families. Practiced German and got my first taste of living abroad.' },
-      { coords: [11.2558, 43.7696], label: 'Florence, Italy — 2021',
-        desc: 'VERTO university semester. Courses in Statistics, Art History, and Sociology. First step into higher education abroad after COVID.' },
-      { coords: [-83.6833, 9.9000], label: 'Turrialba, Costa Rica — 2022',
-        desc: 'VERTO semester at an agricultural research institute. Studied ecology, comparative politics, and began learning Spanish. Traveled all over the country.' },
-      { coords: [14.4378, 50.0755], label: 'Prague, Czech Republic — 2022–2025',
-        desc: 'BSc in Environmental Data Science at Czech University of Life Sciences. Courses in ecology, hydrology, GIS, and data visualization. Thesis on flood and ET dynamics.' },
-      { coords: [5.6651, 51.9685], label: 'Wageningen, Netherlands — 2025–present',
-        desc: 'MSc in Geo-Information Sciences at Wageningen University & Research. Remote Sensing, ML, Deep Learning, Geoscripting. Consultancy with Antea Group on airborne LiDAR obstacle detection.' },
-    ];
-
-    var wrap = document.getElementById('globe-el');
-    var tooltip = document.getElementById('globe-tooltip');
-    // Fixed coordinate space; SVG scales via viewBox to fill container
-    var W = 800, H = 500, R = 230;
-
-    var projection = d3.geoOrthographic()
-      .scale(R)
-      .translate([W / 2, H / 2])
-      .clipAngle(90)
-      .rotate([10, -25, 0]);
-
-    var path = d3.geoPath().projection(projection);
-
-    var svg = d3.select('#globe-el').append('svg')
-      .attr('viewBox', '0 0 ' + W + ' ' + H)
-      .attr('width', '100%')
-      .style('max-height', '500px');
-
-    // White background
-    svg.append('rect').attr('width', W).attr('height', H).attr('fill', '#ffffff');
-
-    // Ocean
-    svg.append('circle')
-      .attr('cx', W / 2).attr('cy', H / 2).attr('r', R)
-      .attr('fill', '#C7E5FF');
-
-    // Graticule
-    var graticule = d3.geoGraticule()();
-    var gratPath = svg.append('path')
-      .datum(graticule)
-      .attr('fill', 'none')
-      .attr('stroke', '#a8d4f0')
-      .attr('stroke-width', 0.6)
-      .attr('d', path);
-
-    // Land
-    var landPath = svg.append('path')
-      .attr('fill', '#93AB9F')
-      .attr('stroke', '#7a9490')
-      .attr('stroke-width', 0.5);
-
-    // Dots (rendered after land so they appear on top)
-    var dotsG = svg.append('g');
-
-    function isVisible(coords) {
-      var rot = projection.rotate();
-      return d3.geoDistance(coords, [-rot[0], -rot[1]]) < Math.PI / 2;
-    }
-
-    function redraw() {
-      gratPath.attr('d', path);
-      landPath.attr('d', path);
-      dotsG.selectAll('.dot-glow, .dot-main').each(function(d) {
-        var p = projection(d.coords);
-        var vis = isVisible(d.coords);
-        d3.select(this).attr('cx', p[0]).attr('cy', p[1])
-          .attr('display', vis ? null : 'none');
-      });
-    }
-
-    // Drag to rotate
-    var dragOrigin = null, rotOrigin = null;
-    svg.on('mousedown', function(event) {
-      if (event.target.classList.contains('dot-main')) return;
-      dragOrigin = [event.clientX, event.clientY];
-      rotOrigin = projection.rotate().slice();
-      svg.classed('dragging', true);
-    });
-    d3.select(document)
-      .on('mousemove.globe', function(event) {
-        if (!dragOrigin) return;
-        var dx = event.clientX - dragOrigin[0];
-        var dy = event.clientY - dragOrigin[1];
-        projection.rotate([
-          rotOrigin[0] + dx * 0.35,
-          Math.max(-80, Math.min(80, rotOrigin[1] - dy * 0.35)),
-          rotOrigin[2]
-        ]);
-        redraw();
-      })
-      .on('mouseup.globe', function() {
-        dragOrigin = null;
-        svg.classed('dragging', false);
-      });
-
-    // Load world topology
-    fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
-      .then(function(r) { return r.json(); })
-      .then(function(world) {
-        landPath.datum(topojson.feature(world, world.objects.land));
-        redraw();
-
-        // Glow rings
-        dotsG.selectAll('.dot-glow').data(journeyPoints).enter()
-          .append('circle').attr('class', 'dot-glow')
-          .attr('r', 13)
-          .attr('fill', '#FB2C36')
-          .attr('opacity', 0.22)
-          .each(function(d) {
-            var p = projection(d.coords);
-            d3.select(this).attr('cx', p[0]).attr('cy', p[1])
-              .attr('display', isVisible(d.coords) ? null : 'none');
-          });
-
-        // Dots
-        dotsG.selectAll('.dot-main').data(journeyPoints).enter()
-          .append('circle').attr('class', 'dot-main')
-          .attr('r', 7)
-          .attr('fill', '#ffffff')
-          .attr('stroke', '#FB2C36')
-          .attr('stroke-width', 2)
-          .style('cursor', 'pointer')
-          .each(function(d) {
-            var p = projection(d.coords);
-            d3.select(this).attr('cx', p[0]).attr('cy', p[1])
-              .attr('display', isVisible(d.coords) ? null : 'none');
-          })
-          .on('mouseenter', function(event, d) {
-            var rect = document.getElementById('globe-wrap').getBoundingClientRect();
-            var x = event.clientX - rect.left;
-            var y = event.clientY - rect.top;
-            var left = (x + 16 + 250 > wrap.offsetWidth) ? x - 264 : x + 16;
-            tooltip.style.left = left + 'px';
-            tooltip.style.top = Math.max(8, y - 10) + 'px';
-            tooltip.innerHTML = '<strong>' + d.label + '</strong>' + d.desc;
-            tooltip.style.display = 'block';
-          })
-          .on('mousemove', function(event) {
-            var rect = document.getElementById('globe-wrap').getBoundingClientRect();
-            var x = event.clientX - rect.left;
-            var y = event.clientY - rect.top;
-            var left = (x + 16 + 250 > wrap.offsetWidth) ? x - 264 : x + 16;
-            tooltip.style.left = left + 'px';
-            tooltip.style.top = Math.max(8, y - 10) + 'px';
-          })
-          .on('mouseleave', function() { tooltip.style.display = 'none'; });
-      });
-  })();
-  </script>
-
   <!-- TIMELINE -->
   <div class="tl-wrap">
     <div class="section-header">Education &amp; Experience</div>
 
     <!-- Year labels -->
     <div style="display:flex; margin-bottom:6px;">
-      <div style="flex:1; font-size:10px; color:#9C7894; font-weight:500; text-align:center;">2019&ndash;20</div>
-      <div style="flex:1; font-size:10px; color:#9C7894; font-weight:500; text-align:center;">2021</div>
-      <div style="flex:1; font-size:10px; color:#9C7894; font-weight:500; text-align:center;">2021&ndash;22</div>
-      <div style="flex:1; font-size:10px; color:#9C7894; font-weight:500; text-align:center;">2022</div>
-      <div style="flex:1; font-size:10px; color:#9C7894; font-weight:500; text-align:center;">2022&ndash;25</div>
-      <div style="flex:1; font-size:10px; color:#9C7894; font-weight:500; text-align:center;">2025&ndash;</div>
+      <div style="flex:1; font-size:10px; color:#7a8aaa; font-weight:500; text-align:center;">2019&ndash;20</div>
+      <div style="flex:1; font-size:10px; color:#7a8aaa; font-weight:500; text-align:center;">2021</div>
+      <div style="flex:1; font-size:10px; color:#7a8aaa; font-weight:500; text-align:center;">2021&ndash;22</div>
+      <div style="flex:1; font-size:10px; color:#7a8aaa; font-weight:500; text-align:center;">2022</div>
+      <div style="flex:1; font-size:10px; color:#7a8aaa; font-weight:500; text-align:center;">2022&ndash;25</div>
+      <div style="flex:1; font-size:10px; color:#7a8aaa; font-weight:500; text-align:center;">2025&ndash;</div>
     </div>
 
     <!-- Two stacked bars -->
     <div style="position:relative; height:14px; margin-bottom:0;">
-      <div style="position:absolute; top:0; left:0; right:0; height:4px; background:#C8CEEE; border-radius:2px;"></div>
-      <div style="position:absolute; top:8px; left:0; right:0; height:4px; background:#EEE7EF; border-radius:2px;">
-        <div style="position:absolute; top:0; left:0.5%; width:16%; height:4px; background:#9C7894; border-radius:2px;"></div>
-        <div style="position:absolute; top:0; left:17%; width:7%; height:4px; background:#9C7894; border-radius:2px;"></div>
-        <div style="position:absolute; top:0; left:25%; width:8%; height:4px; background:#9C7894; border-radius:2px;"></div>
-        <div style="position:absolute; top:0; left:34%; width:7%; height:4px; background:#9C7894; border-radius:2px;"></div>
-        <div style="position:absolute; top:0; left:42%; width:30%; height:4px; background:#55597C; border-radius:2px;"></div>
-        <div style="position:absolute; top:0; left:74%; width:26%; height:4px; background:#55597C; border-radius:2px;"></div>
+      <div style="position:absolute; top:0; left:0; right:0; height:4px; background:#2a3d6a; border-radius:2px;"></div>
+      <div style="position:absolute; top:8px; left:0; right:0; height:4px; background:#1a2440; border-radius:2px;">
+        <div style="position:absolute; top:0; left:0.5%; width:16%; height:4px; background:#7a6888; border-radius:2px;"></div>
+        <div style="position:absolute; top:0; left:17%; width:7%; height:4px; background:#7a6888; border-radius:2px;"></div>
+        <div style="position:absolute; top:0; left:25%; width:8%; height:4px; background:#7a6888; border-radius:2px;"></div>
+        <div style="position:absolute; top:0; left:34%; width:7%; height:4px; background:#7a6888; border-radius:2px;"></div>
+        <div style="position:absolute; top:0; left:42%; width:30%; height:4px; background:#8595c0; border-radius:2px;"></div>
+        <div style="position:absolute; top:0; left:74%; width:26%; height:4px; background:#8595c0; border-radius:2px;"></div>
       </div>
     </div>
 
@@ -354,62 +176,62 @@
     <div style="display:flex;">
 
       <div style="flex:1; display:flex; flex-direction:column; align-items:center;">
-        <div style="width:1.5px; height:52px; background:#C8CEEE;"></div>
-        <div style="width:44px; height:44px; border-radius:50%; background:#9C7894; border:3px solid #fff; box-shadow:0 0 0 2px #C8CEEE;"></div>
+        <div style="width:1.5px; height:52px; background:#2a3d6a;"></div>
+        <div style="width:44px; height:44px; border-radius:50%; background:#7a6888; border:3px solid #0d1526; box-shadow:0 0 0 2px #2a3d6a;"></div>
         <div style="text-align:center; margin-top:8px; padding:0 3px;">
-          <div style="font-size:11px; font-weight:500; color:#55597C; line-height:1.3;">Rotary Exchange</div>
-          <div style="font-size:10px; color:#9C7894; margin-top:2px;">2019&ndash;2020</div>
-          <div style="font-size:10px; color:#9C7894; margin-top:2px; line-height:1.4;">Bremen, Germany</div>
+          <div style="font-size:11px; font-weight:500; color:#c8d0e8; line-height:1.3;">Rotary Exchange</div>
+          <div style="font-size:10px; color:#7a8aaa; margin-top:2px;">2019&ndash;2020</div>
+          <div style="font-size:10px; color:#7a8aaa; margin-top:2px; line-height:1.4;">Bremen, Germany</div>
         </div>
       </div>
 
       <div style="flex:1; display:flex; flex-direction:column; align-items:center;">
-        <div style="width:1.5px; height:20px; background:#C8CEEE;"></div>
-        <div style="width:36px; height:36px; border-radius:50%; background:#BCA8C1; border:3px solid #fff; box-shadow:0 0 0 2px #C8CEEE;"></div>
+        <div style="width:1.5px; height:20px; background:#2a3d6a;"></div>
+        <div style="width:36px; height:36px; border-radius:50%; background:#6a5a72; border:3px solid #0d1526; box-shadow:0 0 0 2px #2a3d6a;"></div>
         <div style="text-align:center; margin-top:8px; padding:0 3px;">
-          <div style="font-size:11px; font-weight:500; color:#55597C; line-height:1.3;">VERTO Florence, Italy</div>
-          <div style="font-size:10px; color:#9C7894; margin-top:2px;">2021</div>
-          <div style="font-size:10px; color:#9C7894; margin-top:2px; line-height:1.4;">University semester</div>
+          <div style="font-size:11px; font-weight:500; color:#c8d0e8; line-height:1.3;">VERTO Florence, Italy</div>
+          <div style="font-size:10px; color:#7a8aaa; margin-top:2px;">2021</div>
+          <div style="font-size:10px; color:#7a8aaa; margin-top:2px; line-height:1.4;">University semester</div>
         </div>
       </div>
 
       <div style="flex:1; display:flex; flex-direction:column; align-items:center;">
-        <div style="width:1.5px; height:52px; background:#C8CEEE;"></div>
-        <div style="width:36px; height:36px; border-radius:50%; background:#BCA8C1; border:3px solid #fff; box-shadow:0 0 0 2px #C8CEEE;"></div>
+        <div style="width:1.5px; height:52px; background:#2a3d6a;"></div>
+        <div style="width:36px; height:36px; border-radius:50%; background:#6a5a72; border:3px solid #0d1526; box-shadow:0 0 0 2px #2a3d6a;"></div>
         <div style="text-align:center; margin-top:8px; padding:0 3px;">
-          <div style="font-size:11px; font-weight:500; color:#55597C; line-height:1.3;">Pedalheads</div>
-          <div style="font-size:10px; color:#9C7894; margin-top:2px;">2021&ndash;2022</div>
-          <div style="font-size:10px; color:#9C7894; margin-top:2px; line-height:1.4;">Bike instructor, Seattle</div>
+          <div style="font-size:11px; font-weight:500; color:#c8d0e8; line-height:1.3;">Pedalheads</div>
+          <div style="font-size:10px; color:#7a8aaa; margin-top:2px;">2021&ndash;2022</div>
+          <div style="font-size:10px; color:#7a8aaa; margin-top:2px; line-height:1.4;">Bike instructor, Seattle</div>
         </div>
       </div>
 
       <div style="flex:1; display:flex; flex-direction:column; align-items:center;">
-        <div style="width:1.5px; height:20px; background:#C8CEEE;"></div>
-        <div style="width:36px; height:36px; border-radius:50%; background:#BCA8C1; border:3px solid #fff; box-shadow:0 0 0 2px #C8CEEE;"></div>
+        <div style="width:1.5px; height:20px; background:#2a3d6a;"></div>
+        <div style="width:36px; height:36px; border-radius:50%; background:#6a5a72; border:3px solid #0d1526; box-shadow:0 0 0 2px #2a3d6a;"></div>
         <div style="text-align:center; margin-top:8px; padding:0 3px;">
-          <div style="font-size:11px; font-weight:500; color:#55597C; line-height:1.3;">VERTO Costa Rica</div>
-          <div style="font-size:10px; color:#9C7894; margin-top:2px;">2022</div>
-          <div style="font-size:10px; color:#9C7894; margin-top:2px; line-height:1.4;">University semester</div>
+          <div style="font-size:11px; font-weight:500; color:#c8d0e8; line-height:1.3;">VERTO Costa Rica</div>
+          <div style="font-size:10px; color:#7a8aaa; margin-top:2px;">2022</div>
+          <div style="font-size:10px; color:#7a8aaa; margin-top:2px; line-height:1.4;">University semester</div>
         </div>
       </div>
 
       <div style="flex:1; display:flex; flex-direction:column; align-items:center;">
-        <div style="width:1.5px; height:52px; background:#C8CEEE;"></div>
-        <div style="width:52px; height:52px; border-radius:50%; background:#55597C; border:3px solid #fff; box-shadow:0 0 0 2px #9C7894;"></div>
+        <div style="width:1.5px; height:52px; background:#2a3d6a;"></div>
+        <div style="width:52px; height:52px; border-radius:50%; background:#8595c0; border:3px solid #0d1526; box-shadow:0 0 0 2px #5a6a9a;"></div>
         <div style="text-align:center; margin-top:8px; padding:0 3px;">
-          <div style="font-size:11px; font-weight:500; color:#55597C; line-height:1.3;">Czech University of Life Sciences Prague</div>
-          <div style="font-size:10px; color:#9C7894; margin-top:2px;">2022&ndash;2025</div>
-          <div style="font-size:10px; color:#9C7894; margin-top:2px; line-height:1.4;">BSc Environmental Data Science</div>
+          <div style="font-size:11px; font-weight:500; color:#c8d0e8; line-height:1.3;">Czech University of Life Sciences Prague</div>
+          <div style="font-size:10px; color:#7a8aaa; margin-top:2px;">2022&ndash;2025</div>
+          <div style="font-size:10px; color:#7a8aaa; margin-top:2px; line-height:1.4;">BSc Environmental Data Science</div>
         </div>
       </div>
 
       <div style="flex:1; display:flex; flex-direction:column; align-items:center;">
-        <div style="width:1.5px; height:20px; background:#C8CEEE;"></div>
-        <div style="width:52px; height:52px; border-radius:50%; background:#55597C; border:3px solid #fff; box-shadow:0 0 0 2px #9C7894;"></div>
+        <div style="width:1.5px; height:20px; background:#2a3d6a;"></div>
+        <div style="width:52px; height:52px; border-radius:50%; background:#8595c0; border:3px solid #0d1526; box-shadow:0 0 0 2px #5a6a9a;"></div>
         <div style="text-align:center; margin-top:8px; padding:0 3px;">
-          <div style="font-size:11px; font-weight:500; color:#55597C; line-height:1.3;">Wageningen University &amp; Research</div>
-          <div style="font-size:10px; color:#9C7894; margin-top:2px;">2025&ndash;present</div>
-          <div style="font-size:10px; color:#9C7894; margin-top:2px; line-height:1.4;">MSc Geo-Information Sciences</div>
+          <div style="font-size:11px; font-weight:500; color:#c8d0e8; line-height:1.3;">Wageningen University &amp; Research</div>
+          <div style="font-size:10px; color:#7a8aaa; margin-top:2px;">2025&ndash;present</div>
+          <div style="font-size:10px; color:#7a8aaa; margin-top:2px; line-height:1.4;">MSc Geo-Information Sciences</div>
         </div>
       </div>
 
@@ -424,7 +246,7 @@
         <div class="proj-img"><img src="past_visualizations/GIS_in_context_peatland.png" alt="Scotland Peatlands" /></div>
         <div class="proj-body">
           <div class="proj-course">GIS in Context</div>
-          <div class="proj-title">Scotland's Peatlands: Opportunities for Investors</div>
+          <div class="proj-title">Scotland&rsquo;s Peatlands: Opportunities for Investors</div>
           <div class="proj-desc">This project was a StoryMap designed to inform and engage potential investors in Scottish peatland restoration. Peatlands cover approximately 20% of Scotland and store around 1.6 million tonnes of carbon, yet an estimated 80% are currently degraded and actively emitting CO2. The StoryMap communicated the ecological and financial case for restoration, combining narrative with spatial data to highlight peatland distribution across Scotland. Selected study areas were mapped in detail, with peat depth data used to calculate carbon storage in both shallow and deep peat layers. The primary goal was to bridge the funding gap left by government investment by making a compelling, data-driven case to private investors.</div>
           <a href="https://storymaps.arcgis.com/stories/8bfadb89de5b4b60bb6b278223f3c407" target="_blank" rel="noopener" class="proj-link" style="display:block;text-decoration:none;">View storymap &rarr;</a>
         </div>
@@ -467,7 +289,7 @@
 
   <div class="contact" id="contact">
     <div>
-      <div class="contact-h">Let's connect</div>
+      <div class="contact-h">Let&rsquo;s connect</div>
       <div class="contact-s">sstaheli52@gmail.com</div>
     </div>
     <div class="btn-row">
@@ -477,6 +299,167 @@
   </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
+<script>
+(function() {
+  var journeyPoints = [
+    { coords: [-122.3321, 47.6062], label: 'Seattle, WA — USA',
+      desc: 'This is where I was born and lived for the majority of my life. More importantly, this is where my ever growing love for the nature and the sea originated. My childhood consisted of traveling, sailing, skiing, hiking, biking, and playing tons of soccer.' },
+    { coords: [8.8017, 53.0793], label: 'Bremen, Germany — 2019–2020',
+      desc: 'Rotary Youth Exchange at 16–17, living with host families. Practiced German and got my first taste of living abroad.' },
+    { coords: [11.2558, 43.7696], label: 'Florence, Italy — 2021',
+      desc: 'VERTO university semester. Courses in Statistics, Art History, and Sociology. First step into higher education abroad after COVID.' },
+    { coords: [-83.6833, 9.9000], label: 'Turrialba, Costa Rica — 2022',
+      desc: 'VERTO semester at an agricultural research institute. Studied ecology, comparative politics, and began learning Spanish. Traveled all over the country.' },
+    { coords: [14.4378, 50.0755], label: 'Prague, Czech Republic — 2022–2025',
+      desc: 'BSc in Environmental Data Science at Czech University of Life Sciences. Courses in ecology, hydrology, GIS, and data visualization. Thesis on flood and ET dynamics.' },
+    { coords: [5.6651, 51.9685], label: 'Wageningen, Netherlands — 2025–present',
+      desc: 'MSc in Geo-Information Sciences at Wageningen University & Research. Remote Sensing, ML, Deep Learning, Geoscripting. Consultancy with Antea Group on airborne LiDAR obstacle detection.' },
+  ];
+
+  var wrap = document.getElementById('globe-el');
+  var tooltip = document.getElementById('globe-tooltip');
+  var W = 800, H = 500, R = 230;
+
+  var projection = d3.geoOrthographic()
+    .scale(R)
+    .translate([W / 2, H / 2])
+    .clipAngle(90)
+    .rotate([10, -25, 0]);
+
+  var path = d3.geoPath().projection(projection);
+
+  var svg = d3.select('#globe-el').append('svg')
+    .attr('viewBox', '0 0 ' + W + ' ' + H)
+    .attr('width', '100%')
+    .style('max-height', '500px');
+
+  // Transparent background (shows dark hero behind globe edges)
+  svg.append('rect').attr('width', W).attr('height', H).attr('fill', 'none');
+
+  // Ocean
+  svg.append('circle')
+    .attr('cx', W / 2).attr('cy', H / 2).attr('r', R)
+    .attr('fill', '#C7E5FF');
+
+  // Graticule
+  var graticule = d3.geoGraticule()();
+  var gratPath = svg.append('path')
+    .datum(graticule)
+    .attr('fill', 'none')
+    .attr('stroke', '#a8d4f0')
+    .attr('stroke-width', 0.6)
+    .attr('d', path);
+
+  // Land
+  var landPath = svg.append('path')
+    .attr('fill', '#93AB9F')
+    .attr('stroke', '#7a9490')
+    .attr('stroke-width', 0.5);
+
+  // Dots group
+  var dotsG = svg.append('g');
+
+  function isVisible(coords) {
+    var rot = projection.rotate();
+    return d3.geoDistance(coords, [-rot[0], -rot[1]]) < Math.PI / 2;
+  }
+
+  function redraw() {
+    gratPath.attr('d', path);
+    landPath.attr('d', path);
+    dotsG.selectAll('.dot-glow, .dot-main').each(function(d) {
+      var p = projection(d.coords);
+      var vis = isVisible(d.coords);
+      d3.select(this).attr('cx', p[0]).attr('cy', p[1])
+        .attr('display', vis ? null : 'none');
+    });
+  }
+
+  // Drag to rotate
+  var dragOrigin = null, rotOrigin = null;
+  svg.on('mousedown', function(event) {
+    if (event.target.classList.contains('dot-main')) return;
+    dragOrigin = [event.clientX, event.clientY];
+    rotOrigin = projection.rotate().slice();
+    svg.classed('dragging', true);
+  });
+  d3.select(document)
+    .on('mousemove.globe', function(event) {
+      if (!dragOrigin) return;
+      var dx = event.clientX - dragOrigin[0];
+      var dy = event.clientY - dragOrigin[1];
+      projection.rotate([
+        rotOrigin[0] + dx * 0.35,
+        Math.max(-80, Math.min(80, rotOrigin[1] - dy * 0.35)),
+        rotOrigin[2]
+      ]);
+      redraw();
+    })
+    .on('mouseup.globe', function() {
+      dragOrigin = null;
+      svg.classed('dragging', false);
+    });
+
+  // Auto-spin (pauses while dragging)
+  (function spinLoop() {
+    if (!dragOrigin) {
+      var rot = projection.rotate();
+      projection.rotate([rot[0] + 0.08, rot[1], rot[2]]);
+      redraw();
+    }
+    requestAnimationFrame(spinLoop);
+  })();
+
+  // Load world topology
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
+    .then(function(r) { return r.json(); })
+    .then(function(world) {
+      landPath.datum(topojson.feature(world, world.objects.land));
+      redraw();
+
+      dotsG.selectAll('.dot-glow').data(journeyPoints).enter()
+        .append('circle').attr('class', 'dot-glow')
+        .attr('r', 13).attr('fill', '#FB2C36').attr('opacity', 0.22)
+        .each(function(d) {
+          var p = projection(d.coords);
+          d3.select(this).attr('cx', p[0]).attr('cy', p[1])
+            .attr('display', isVisible(d.coords) ? null : 'none');
+        });
+
+      dotsG.selectAll('.dot-main').data(journeyPoints).enter()
+        .append('circle').attr('class', 'dot-main')
+        .attr('r', 7).attr('fill', '#ffffff').attr('stroke', '#FB2C36').attr('stroke-width', 2)
+        .style('cursor', 'pointer')
+        .each(function(d) {
+          var p = projection(d.coords);
+          d3.select(this).attr('cx', p[0]).attr('cy', p[1])
+            .attr('display', isVisible(d.coords) ? null : 'none');
+        })
+        .on('mouseenter', function(event, d) {
+          var rect = document.getElementById('globe-wrap').getBoundingClientRect();
+          var x = event.clientX - rect.left;
+          var y = event.clientY - rect.top;
+          var left = (x + 16 + 250 > wrap.offsetWidth) ? x - 264 : x + 16;
+          tooltip.style.left = left + 'px';
+          tooltip.style.top = Math.max(8, y - 10) + 'px';
+          tooltip.innerHTML = '<strong>' + d.label + '</strong>' + d.desc;
+          tooltip.style.display = 'block';
+        })
+        .on('mousemove', function(event) {
+          var rect = document.getElementById('globe-wrap').getBoundingClientRect();
+          var x = event.clientX - rect.left;
+          var y = event.clientY - rect.top;
+          var left = (x + 16 + 250 > wrap.offsetWidth) ? x - 264 : x + 16;
+          tooltip.style.left = left + 'px';
+          tooltip.style.top = Math.max(8, y - 10) + 'px';
+        })
+        .on('mouseleave', function() { tooltip.style.display = 'none'; });
+    });
+})();
+</script>
 
 </body>
 </html>
