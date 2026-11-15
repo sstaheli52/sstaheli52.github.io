@@ -19,12 +19,11 @@
   .nav-inner a:hover { color: #EEE7EF; }
 
   /* HERO */
-  .hero-new { display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 70px); padding: 60px; gap: 0; }
-  .hero-left { flex: 1; display: flex; align-items: center; justify-content: flex-end; padding-right: 52px; }
-  .hero-title { font-family: 'Shrikhand', serif; font-size: 72px; line-height: 1.05; color: #EEE7EF; text-align: right; }
+  .hero-new { display: flex; align-items: center; justify-content: center; min-height: calc(100vh - 70px); padding: 60px 40px; gap: 48px; }
+  .hero-left { display: flex; align-items: center; justify-content: center; }
+  .hero-title { font-family: 'Shrikhand', serif; font-size: 56px; line-height: 1.1; color: #EEE7EF; text-align: center; white-space: nowrap; }
   .hero-globe-col { flex: 0 0 42%; max-width: 540px; position: relative; }
-  .hero-right { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-left: 52px; gap: 20px; }
-  .hero-bio { font-size: 13px; color: #9eadc8; line-height: 1.85; max-width: 300px; }
+  .hero-right { display: flex; align-items: center; justify-content: center; }
   .photo-strip { display: flex; flex-direction: column; align-items: center; gap: 10px; }
   .photo-strip img { width: 115px; height: 155px; object-fit: cover; object-position: center top; border-radius: 10px; display: block; }
 
@@ -97,14 +96,14 @@
 <div class="c">
   <nav class="nav">
     <div class="nav-inner">
-      <a href="#about">About</a><a href="#map">Map</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+      <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <div class="hero-new" id="about">
     <div class="hero-left">
-      <div class="hero-title">Hi,<br>I&rsquo;m<br>Sophia</div>
+      <div class="hero-title">Sophia<br>Staheli</div>
     </div>
     <div class="hero-globe-col">
       <div id="globe-wrap">
@@ -113,41 +112,10 @@
       </div>
     </div>
     <div class="hero-right">
-      <p class="hero-bio">A geospatial data scientist looking to contribute positivity and change to the world around me, one map at a time! Currently studying a Master&rsquo;s in Geo-Information Science at Wageningen University and excited to see where it takes me.</p>
       <div class="photo-strip">
         <img src="Design/sophia1.jpg" alt="Sophia at the coast" />
         <img src="Design/sophia2.jpg" alt="Sophia overlooking the sea" />
         <img src="Design/sophia3.webp" alt="Sophia at graduation" />
-      </div>
-    </div>
-  </div>
-
-  <!-- MAP -->
-  <div class="map-section" id="map">
-    <div class="section-header" style="text-align: center; font-size: 18px;">My Journey</div>
-    <div class="map-wrap">
-      <div class="map-img-clip"><img src="Design/transparent_map_no_antartica.png" alt="world map" /></div>
-      <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <polyline points="16.9,24.3 52.1,20.7 52.9,27.8 27.2,52.7 53.7,22.4 51.2,20.3"
-          fill="none" stroke="#fff" stroke-width="1.5" stroke-dasharray="1.2,0.8" vector-effect="non-scaling-stroke" opacity="0.5"/>
-      </svg>
-      <div class="mdot" style="top:24.3%; left:16.9%;">
-        <div class="tooltip"><strong>Seattle, WA &mdash; USA</strong>This is where I was born and lived for the majority of my life. More importantly, this is where my ever growing love for the nature and the sea originated. My childhood consisted of traveling, sailing, skiing, hiking, biking, and playing tons of soccer.</div>
-      </div>
-      <div class="mdot" style="top:20.7%; left:52.1%;">
-        <div class="tooltip"><strong>Bremen, Germany &mdash; 2019&ndash;2020</strong>Rotary Youth Exchange at 16&ndash;17, living with host families. Practiced German and got my first taste of living abroad.</div>
-      </div>
-      <div class="mdot" style="top:27.8%; left:52.9%;">
-        <div class="tooltip" style="bottom:auto;top:18px;"><strong>Florence, Italy &mdash; 2021</strong>VERTO university semester. Courses in Statistics, Art History, and Sociology. First step into higher education abroad after COVID.</div>
-      </div>
-      <div class="mdot" style="top:52.7%; left:27.2%;">
-        <div class="tooltip"><strong>Turrialba, Costa Rica &mdash; 2022</strong>VERTO semester at an agricultural research institute. Studied ecology, comparative politics, and began learning Spanish. Traveled all over the country.</div>
-      </div>
-      <div class="mdot" style="top:22.4%; left:53.7%;">
-        <div class="tooltip"><strong>Prague, Czech Republic &mdash; 2022&ndash;2025</strong>BSc in Environmental Data Science at Czech University of Life Sciences. Courses in ecology, hydrology, GIS, and data visualization. Thesis on flood and ET dynamics.</div>
-      </div>
-      <div class="mdot" style="top:20.3%; left:51.2%;">
-        <div class="tooltip"><strong>Wageningen, Netherlands &mdash; 2025&ndash;present</strong>MSc in Geo-Information Sciences at Wageningen University &amp; Research. Remote Sensing, ML, Deep Learning, Geoscripting. Consultancy with Antea Group on airborne LiDAR obstacle detection.</div>
       </div>
     </div>
   </div>
