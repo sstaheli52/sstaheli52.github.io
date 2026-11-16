@@ -69,6 +69,8 @@
   .proj-link-btn { font-size: 11px; font-weight: 500; padding: 7px 16px; border-radius: 20px; border: 0.5px solid #2a3d6a; color: #9eadc8; text-decoration: none; display: inline-block; transition: background 0.15s, color 0.15s; }
   .proj-link-btn:hover { background: #1a2d4a; color: #EEE7EF; }
   .proj-link-btn.placeholder { opacity: 0.4; cursor: default; pointer-events: none; }
+  .proj-photo-placeholder { flex: 0 0 44%; background: #1a2d4a; display: flex; align-items: center; justify-content: center; min-height: 280px; }
+  .proj-photo-placeholder span { font-size: 11px; color: #3a5080; letter-spacing: 1px; text-transform: uppercase; }
 
   /* SKILLS */
   .skills { margin: 0 40px 40px; padding: 22px 24px; background: #111d33; border-radius: 16px; border: 0.5px solid #1e3058; }
@@ -350,6 +352,253 @@
             </div>
             <div class="proj-links">
               <a href="https://www.figma.com/proto/DQQdoqkyrZIihxVoRdX7qW/Hotspotters---Vote-for-Watchtower?node-id=780-1074&t=LAj0p059KCPO23OE-1" target="_blank" rel="noopener" class="proj-link-btn">View Prototype &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5: MSc Thesis — photo left, content right -->
+      <div class="proj-card-v">
+        <div class="proj-card-header">
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span class="proj-title">Separating Wildfire &amp; Management Effects on Forest Structure &mdash; Spanish Forests</span>
+            <span class="proj-course-label">MSc Thesis</span>
+          </div>
+          <span class="proj-year">2026 &ndash; present</span>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-photo-placeholder"><span>Image coming soon</span></div>
+          <div class="proj-content">
+            <div>
+              <div class="proj-section-label">Description</div>
+              <p class="proj-desc-text">Pairing pre- and post-fire GEDI LiDAR footprints across four 2022 Spanish fires to separate the structural effects of wildfire from post-fire management (salvage logging). Linear mixed-effects models quantify the extra canopy height loss due to management, and a Sentinel-1 / ALOS PALSAR-2 fusion model is fine-tuned to predict monthly canopy height validated against Spanish national airborne LiDAR.</p>
+            </div>
+            <div class="proj-challenges">
+              <div class="proj-section-label">Challenges</div>
+              <ul><li>...</li></ul>
+            </div>
+            <div class="proj-skills-row">
+              <span class="stag">GEDI LiDAR</span>
+              <span class="stag">Sentinel-1</span>
+              <span class="stag">ALOS PALSAR-2</span>
+              <span class="stag">PlanetScope</span>
+              <span class="stag">Mixed-Effects Models</span>
+              <span class="stag">Python</span>
+              <span class="stag">R</span>
+            </div>
+            <div class="proj-links">
+              <a href="#" class="proj-link-btn placeholder">Link coming soon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6: LiDAR Airport — content left, photo right (flip) -->
+      <div class="proj-card-v">
+        <div class="proj-card-header">
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span class="proj-title">LiDAR-Based Airport Obstacle Detection &mdash; Twente Airport</span>
+            <span class="proj-course-label">Academic Consultancy Training</span>
+          </div>
+          <span class="proj-year">2026</span>
+        </div>
+        <div class="proj-card-body flip">
+          <div class="proj-photo-placeholder"><span>Image coming soon</span></div>
+          <div class="proj-content">
+            <div>
+              <div class="proj-section-label">Description</div>
+              <p class="proj-desc-text">Built an end-to-end automated pipeline for client Antea Group that maps airport obstacles (trees and buildings) and their heights above ground. Integrated open Dutch geodata — AHN LiDAR point clouds, aerial RGB and infrared imagery, DSM/DTM elevation models, and BAG building footprints — to detect tree crowns via NDVI and canopy height models, and estimate building heights from classified LiDAR points.</p>
+            </div>
+            <div class="proj-challenges">
+              <div class="proj-section-label">Challenges</div>
+              <ul><li>...</li></ul>
+            </div>
+            <div class="proj-skills-row">
+              <span class="stag">Python</span>
+              <span class="stag">LiDAR / AHN</span>
+              <span class="stag">NDVI</span>
+              <span class="stag">Canopy Height Model</span>
+              <span class="stag">GeoPandas</span>
+              <span class="stag">GeoPackage</span>
+            </div>
+            <div class="proj-links">
+              <a href="#" class="proj-link-btn placeholder">Link coming soon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7: Pine Disease — photo left, content right -->
+      <div class="proj-card-v">
+        <div class="proj-card-header">
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span class="proj-title">Early Detection of Pine Disease from Sentinel-2 &mdash; San Rossore, Italy</span>
+            <span class="proj-course-label">Advanced Earth Observation</span>
+          </div>
+          <span class="proj-year">2026</span>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-photo-placeholder"><span>Image coming soon</span></div>
+          <div class="proj-content">
+            <div>
+              <div class="proj-section-label">Description</div>
+              <p class="proj-desc-text">Adapted a PROSAIL radiative transfer and Gradient Boosting workflow to retrieve canopy water content (R² = 0.59) and chlorophyll content (R² = 0.78) from Sentinel-2 imagery, separating healthy from fungus-infected pines in San Rossore National Park. A four-year Sentinel-2 time series was processed in Google Earth Engine, with ANOVA and correlation analysis confirming statistically significant stress signals (p &lt; 0.001).</p>
+            </div>
+            <div class="proj-challenges">
+              <div class="proj-section-label">Challenges</div>
+              <ul><li>...</li></ul>
+            </div>
+            <div class="proj-skills-row">
+              <span class="stag">PROSAIL</span>
+              <span class="stag">Gradient Boosting</span>
+              <span class="stag">Sentinel-2</span>
+              <span class="stag">Google Earth Engine</span>
+              <span class="stag">R</span>
+              <span class="stag">Time Series</span>
+            </div>
+            <div class="proj-links">
+              <a href="#" class="proj-link-btn placeholder">Link coming soon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8: Land Cover Classification — content left, photo right (flip) -->
+      <div class="proj-card-v">
+        <div class="proj-card-header">
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span class="proj-title">Sentinel-2 Land Cover Classification &mdash; Oosterbeek</span>
+            <span class="proj-course-label">Machine Learning</span>
+          </div>
+          <span class="proj-year">2026</span>
+        </div>
+        <div class="proj-card-body flip">
+          <div class="proj-photo-placeholder"><span>Image coming soon</span></div>
+          <div class="proj-content">
+            <div>
+              <div class="proj-section-label">Description</div>
+              <p class="proj-desc-text">Classified 10 land cover classes from 12-band Sentinel-2 imagery of Oosterbeek, Netherlands, achieving 79% overall accuracy and weighted F1 of 0.78 with a tuned k-nearest neighbors model. Tested k from 1 to 50 neighbors on a 70/30 train-test split, analysing the bias-variance trade-off, and reached F1 scores of 0.96 for water and 0.91 for herbaceous vegetation.</p>
+            </div>
+            <div class="proj-challenges">
+              <div class="proj-section-label">Challenges</div>
+              <ul><li>...</li></ul>
+            </div>
+            <div class="proj-skills-row">
+              <span class="stag">Python</span>
+              <span class="stag">scikit-learn</span>
+              <span class="stag">k-NN</span>
+              <span class="stag">Sentinel-2</span>
+              <span class="stag">Land Cover Mapping</span>
+              <span class="stag">Accuracy Assessment</span>
+            </div>
+            <div class="proj-links">
+              <a href="#" class="proj-link-btn placeholder">Link coming soon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9: Vision Transformers — photo left, content right -->
+      <div class="proj-card-v">
+        <div class="proj-card-header">
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span class="proj-title">Land-Use Classification with Vision Transformers</span>
+            <span class="proj-course-label">Deep Learning</span>
+          </div>
+          <span class="proj-year">2026</span>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-photo-placeholder"><span>Image coming soon</span></div>
+          <div class="proj-content">
+            <div>
+              <div class="proj-section-label">Description</div>
+              <p class="proj-desc-text">Achieved a test F1 of 0.93 on multi-label land-use classification of satellite imagery by partially unfreezing a satellite-pretrained Vision Transformer (DINOv3), and 0.99 on single-label classification with ResNet-50. Compared backbone freezing strategies, augmentation, dropout, and learning rates on the 21-class UC Merced dataset, tracking experiments with Weights &amp; Biases.</p>
+            </div>
+            <div class="proj-challenges">
+              <div class="proj-section-label">Challenges</div>
+              <ul><li>...</li></ul>
+            </div>
+            <div class="proj-skills-row">
+              <span class="stag">PyTorch</span>
+              <span class="stag">Vision Transformer</span>
+              <span class="stag">ResNet-50</span>
+              <span class="stag">Transfer Learning</span>
+              <span class="stag">Hugging Face</span>
+              <span class="stag">Weights &amp; Biases</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://github.com/sstaheli52/Deep-learning-land-use-classification" target="_blank" rel="noopener" class="proj-link-btn">View Repository &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10: BSc Thesis — content left, photo right (flip) -->
+      <div class="proj-card-v">
+        <div class="proj-card-header">
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span class="proj-title">Evaluation of Rainfall Sources over Czechia for Major Flood Events</span>
+            <span class="proj-course-label">BSc Thesis</span>
+          </div>
+          <span class="proj-year">2025</span>
+        </div>
+        <div class="proj-card-body flip">
+          <div class="proj-photo-placeholder"><span>Image coming soon</span></div>
+          <div class="proj-content">
+            <div>
+              <div class="proj-section-label">Description</div>
+              <p class="proj-desc-text">Attributed moisture sources for the 1997 Czech flood by applying the HAMSTER bias-correction framework to FLEXPART simulations of 10 million air parcels driven by ERA5 reanalysis data. Found that land sources supplied over 90% of flood moisture on 67% of days, highlighting the role of continental moisture transport. Spatial analysis and mapping performed in QGIS, with climate data processing in CDO and R.</p>
+            </div>
+            <div class="proj-challenges">
+              <div class="proj-section-label">Challenges</div>
+              <ul><li>...</li></ul>
+            </div>
+            <div class="proj-skills-row">
+              <span class="stag">FLEXPART</span>
+              <span class="stag">HAMSTER</span>
+              <span class="stag">ERA5</span>
+              <span class="stag">CDO</span>
+              <span class="stag">R</span>
+              <span class="stag">QGIS</span>
+              <span class="stag">Hydrology</span>
+            </div>
+            <div class="proj-links">
+              <a href="#" class="proj-link-btn placeholder">Link coming soon</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11: Lahaina Wildfire — photo left, content right -->
+      <div class="proj-card-v">
+        <div class="proj-card-header">
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span class="proj-title">Lahaina Wildfire Burn Severity &mdash; Hawaii</span>
+            <span class="proj-course-label">Remote Sensing</span>
+          </div>
+          <span class="proj-year">2024</span>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-photo-placeholder"><span>Image coming soon</span></div>
+          <div class="proj-content">
+            <div>
+              <div class="proj-section-label">Description</div>
+              <p class="proj-desc-text">Assessed burn severity and vegetation health for the 2023 Lahaina wildfire in Hawaii by applying NDVI, NBR, and MNDWI spectral indices to pre- and post-fire Sentinel-2 imagery in ArcGIS Pro. Generated burn severity maps highlighting the spatial extent of vegetation loss and the differential impact across land cover types.</p>
+            </div>
+            <div class="proj-challenges">
+              <div class="proj-section-label">Challenges</div>
+              <ul><li>...</li></ul>
+            </div>
+            <div class="proj-skills-row">
+              <span class="stag">Sentinel-2</span>
+              <span class="stag">ArcGIS Pro</span>
+              <span class="stag">NDVI</span>
+              <span class="stag">NBR</span>
+              <span class="stag">MNDWI</span>
+              <span class="stag">Burn Severity</span>
+            </div>
+            <div class="proj-links">
+              <a href="#" class="proj-link-btn placeholder">Link coming soon</a>
             </div>
           </div>
         </div>
