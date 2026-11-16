@@ -20,7 +20,7 @@
 
   /* HERO */
   .hero-new { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 70px); padding: 48px 40px; gap: 37px; }
-  .hero-title { font-family: 'Shrikhand', serif; font-size: 18px; color: #EEE7EF; text-align: center; }
+  .hero-title { font-family: 'Shrikhand', serif; font-size: 36px; color: #EEE7EF; text-align: center; }
   .hero-globe-col { width: 100%; max-width: 520px; position: relative; }
   .photo-strip { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 24px; }
   .photo-strip img { width: 173px; height: 233px; object-fit: cover; object-position: center top; border-radius: 10px; display: block; }
@@ -414,7 +414,7 @@
           var left = (x + 16 + 250 > wrap.offsetWidth) ? x - 264 : x + 16;
           tooltip.style.left = left + 'px';
           tooltip.style.top = Math.max(8, y - 10) + 'px';
-          tooltip.innerHTML = '<strong>' + d.label + '</strong>' + d.desc;
+          tooltip.innerHTML = d.label;
           tooltip.style.display = 'block';
         })
         .on('mousemove', function(event) {
