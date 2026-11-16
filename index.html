@@ -50,16 +50,25 @@
 
   /* PROJECTS */
   .projects { margin: 0 40px 40px; padding-top: 60px; }
-  .proj-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; align-items: start; }
-  .proj-card { border-radius: 14px; overflow: hidden; border: 0.5px solid #1e3058; cursor: pointer; transition: box-shadow 0.2s; background: #111d33; }
-  .proj-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.5); }
-  .proj-img { background: #1a2d4a; }
-  .proj-img img { width: 100%; height: auto; display: block; }
-  .proj-body { padding: 14px; }
-  .proj-course { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #C78A9A; }
-  .proj-title { font-size: 13px; font-weight: 500; color: #EEE7EF; margin-top: 4px; line-height: 1.4; }
-  .proj-link { font-size: 11px; color: #9eadc8; margin-top: 8px; }
-  .proj-desc { font-size: 11px; color: #6e80a0; margin-top: 6px; line-height: 1.5; }
+  .proj-list { display: flex; flex-direction: column; gap: 20px; }
+  .proj-card-v { border-radius: 14px; overflow: hidden; border: 0.5px solid #1e3058; background: #111d33; }
+  .proj-card-header { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 20px; border-bottom: 0.5px solid #1e3058; }
+  .proj-card-header .proj-title { font-size: 13px; font-weight: 500; color: #EEE7EF; }
+  .proj-card-header .proj-course-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #C78A9A; margin-left: 12px; }
+  .proj-card-header .proj-year { font-size: 12px; color: #6e80a0; }
+  .proj-card-body { display: flex; min-height: 280px; }
+  .proj-card-body.flip { flex-direction: row-reverse; }
+  .proj-photo { flex: 0 0 44%; background: #1a2d4a; }
+  .proj-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .proj-content { flex: 1; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
+  .proj-section-label { font-size: 10px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: #C78A9A; margin-bottom: 5px; }
+  .proj-desc-text { font-size: 12px; color: #8a9ab8; line-height: 1.65; }
+  .proj-challenges ul { margin: 0; padding-left: 16px; font-size: 12px; color: #8a9ab8; line-height: 1.65; }
+  .proj-skills-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+  .proj-links { display: flex; gap: 8px; flex-wrap: wrap; }
+  .proj-link-btn { font-size: 11px; font-weight: 500; padding: 7px 16px; border-radius: 20px; border: 0.5px solid #2a3d6a; color: #9eadc8; text-decoration: none; display: inline-block; transition: background 0.15s, color 0.15s; }
+  .proj-link-btn:hover { background: #1a2d4a; color: #EEE7EF; }
+  .proj-link-btn.placeholder { opacity: 0.4; cursor: default; pointer-events: none; }
 
   /* SKILLS */
   .skills { margin: 0 40px 40px; padding: 22px 24px; background: #111d33; border-radius: 16px; border: 0.5px solid #1e3058; }
@@ -210,41 +219,142 @@
   <!-- PROJECTS -->
   <div class="projects" id="projects">
     <div class="section-header">Projects</div>
-    <div class="proj-grid">
-      <div class="proj-card">
-        <div class="proj-img"><img src="past_visualizations/GIS_in_context_peatland.png" alt="Scotland Peatlands" /></div>
-        <div class="proj-body">
-          <div class="proj-course">GIS in Context</div>
-          <div class="proj-title">Scotland&rsquo;s Peatlands: Opportunities for Investors</div>
-          <div class="proj-desc">This project was a StoryMap designed to inform and engage potential investors in Scottish peatland restoration. Peatlands cover approximately 20% of Scotland and store around 1.6 million tonnes of carbon, yet an estimated 80% are currently degraded and actively emitting CO2. The StoryMap communicated the ecological and financial case for restoration, combining narrative with spatial data to highlight peatland distribution across Scotland. Selected study areas were mapped in detail, with peat depth data used to calculate carbon storage in both shallow and deep peat layers. The primary goal was to bridge the funding gap left by government investment by making a compelling, data-driven case to private investors.</div>
-          <a href="https://storymaps.arcgis.com/stories/8bfadb89de5b4b60bb6b278223f3c407" target="_blank" rel="noopener" class="proj-link" style="display:block;text-decoration:none;">View storymap &rarr;</a>
+    <div class="proj-list">
+
+      <!-- 1: Scotland Peatlands — photo left, content right -->
+      <div class="proj-card-v">
+        <div class="proj-card-header">
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span class="proj-title">Scotland&rsquo;s Peatlands: Opportunities for Investors</span>
+            <span class="proj-course-label">GIS in Context</span>
+          </div>
+          <span class="proj-year">2024</span>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-photo"><img src="past_visualizations/GIS_in_context_peatland.png" alt="Scotland Peatlands" /></div>
+          <div class="proj-content">
+            <div>
+              <div class="proj-section-label">Description</div>
+              <p class="proj-desc-text">A StoryMap designed to inform and engage potential investors in Scottish peatland restoration. Peatlands cover approximately 20% of Scotland and store around 1.6 million tonnes of carbon, yet an estimated 80% are currently degraded. The StoryMap communicated the ecological and financial case for restoration, combining narrative with spatial data to highlight peatland distribution and calculate carbon storage in both shallow and deep peat layers.</p>
+            </div>
+            <div class="proj-challenges">
+              <div class="proj-section-label">Challenges</div>
+              <ul><li>...</li></ul>
+            </div>
+            <div class="proj-skills-row">
+              <span class="stag">ArcGIS StoryMaps</span>
+              <span class="stag">Spatial Analysis</span>
+              <span class="stag">Carbon Modeling</span>
+              <span class="stag">Data Visualization</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://storymaps.arcgis.com/stories/8bfadb89de5b4b60bb6b278223f3c407" target="_blank" rel="noopener" class="proj-link-btn">View StoryMap &rarr;</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="proj-card">
-        <div class="proj-img"><img src="past_visualizations/Geoscripting_elephant_dashboard.jpeg" alt="Elephant Dashboard" /></div>
-        <div class="proj-body">
-          <div class="proj-course">Geoscripting</div>
-          <div class="proj-title">Elephant Presence Modeling &mdash; Welgevonden Reserve</div>
-          <div class="proj-desc">This project used elephant tracking data and environmental covariates to model and predict elephant presence within the Welgevonden Game Reserve in South Africa. A logistic regression model was trained using variables such as distance to roads, human settlements, elevation, temperature, and time of day, and evaluated using confusion matrices, ROC curves, and AUC metrics. Kernel density estimates were also generated to identify spatial hotspots of elephant activity across the 2018 to 2020 period. Results were delivered through an interactive Shiny dashboard, allowing users to explore KDE heatmaps and adjust environmental parameters to visualize predicted probability of elephant presence. The codebase was designed to be adaptable, enabling other researchers to apply the same pipeline to different reserves and species datasets.</div>
+
+      <!-- 2: Elephant Dashboard — content left, photo right -->
+      <div class="proj-card-v">
+        <div class="proj-card-header">
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span class="proj-title">Elephant Presence Modeling &mdash; Welgevonden Reserve</span>
+            <span class="proj-course-label">Geoscripting</span>
+          </div>
+          <span class="proj-year">2025</span>
+        </div>
+        <div class="proj-card-body flip">
+          <div class="proj-photo"><img src="past_visualizations/Geoscripting_elephant_dashboard.jpeg" alt="Elephant Dashboard" /></div>
+          <div class="proj-content">
+            <div>
+              <div class="proj-section-label">Description</div>
+              <p class="proj-desc-text">Used elephant tracking data and environmental covariates to model and predict elephant presence within the Welgevonden Game Reserve in South Africa. A logistic regression model was trained on variables such as distance to roads, elevation, temperature, and time of day, and evaluated using ROC curves and AUC metrics. Results were delivered through an interactive R Shiny dashboard allowing users to explore KDE heatmaps and adjust parameters to visualize predicted probability of presence.</p>
+            </div>
+            <div class="proj-challenges">
+              <div class="proj-section-label">Challenges</div>
+              <ul><li>...</li></ul>
+            </div>
+            <div class="proj-skills-row">
+              <span class="stag">R</span>
+              <span class="stag">Shiny</span>
+              <span class="stag">KDE</span>
+              <span class="stag">Logistic Regression</span>
+              <span class="stag">ROC / AUC</span>
+            </div>
+            <div class="proj-links">
+              <a href="#" class="proj-link-btn placeholder">Link coming soon</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="proj-card">
-        <div class="proj-img"><img src="past_visualizations/Geotools.png" alt="Geotools Pipeline Routing" /></div>
-        <div class="proj-body">
-          <div class="proj-course">Geotools</div>
-          <div class="proj-title">Wastewater Pipeline Routing</div>
-          <div class="proj-desc">This project used ArcGIS to determine the optimal pipeline routes connecting industrial wastewater areas to the largest water refinement basin in Druten, the Netherlands. A cost raster was constructed by incorporating multiple spatial constraints, with suitability values scaled between 1 and 100 to reflect varying levels of routing difficulty. Least-cost path analysis was then applied to calculate the most efficient possible connections between each wastewater source and the target basin. All outputs were consolidated into a single map deliverable, displaying the refinement basin, wastewater areas, candidate pipeline routes, and the final suitability cost raster.</div>
+
+      <!-- 3: Wastewater Pipeline — photo left, content right -->
+      <div class="proj-card-v">
+        <div class="proj-card-header">
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span class="proj-title">Wastewater Pipeline Routing &mdash; Druten</span>
+            <span class="proj-course-label">Geotools</span>
+          </div>
+          <span class="proj-year">2025</span>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-photo"><img src="past_visualizations/Geotools.png" alt="Pipeline Routing" /></div>
+          <div class="proj-content">
+            <div>
+              <div class="proj-section-label">Description</div>
+              <p class="proj-desc-text">Determined optimal pipeline routes connecting industrial wastewater areas to the largest water refinement basin in Druten, Netherlands. A cost raster was constructed from multiple spatial constraints with suitability values scaled 1–100. Least-cost path analysis was applied to calculate the most efficient connections, with all outputs consolidated into a single map deliverable displaying routes, wastewater areas, and the suitability cost raster.</p>
+            </div>
+            <div class="proj-challenges">
+              <div class="proj-section-label">Challenges</div>
+              <ul><li>...</li></ul>
+            </div>
+            <div class="proj-skills-row">
+              <span class="stag">ArcGIS Pro</span>
+              <span class="stag">Cost Raster</span>
+              <span class="stag">Least-Cost Path</span>
+              <span class="stag">Spatial Analysis</span>
+            </div>
+            <div class="proj-links">
+              <a href="#" class="proj-link-btn placeholder">Link coming soon</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="proj-card">
-        <div class="proj-img"><img src="past_visualizations/IDHV_heatmap.png" alt="IDHV Heatmap" /></div>
-        <div class="proj-body">
-          <div class="proj-course">IDHV</div>
-          <div class="proj-title">Groenlo Wildlife Watchtower: Thermal Activity and Viewshed Analysis</div>
-          <div class="proj-desc">This project aimed to engage the public in selecting the location for a new wildlife watchtower in Groenlo, Netherlands, through a participatory digital platform. Early morning drone flights equipped with thermal sensors were conducted across three candidate sites to capture wildlife activity, successfully identifying birds and deer in their natural habitat. A terrestrial lidar scanner was used to perform viewshed analyses at each location, producing clear 2D maps showing what visitors would be able to see from each proposed tower. Orthomosaic heatmaps with labeled wildlife were generated for each site and incorporated into a Figma-designed, clickable website where members of the public could review the evidence and cast their vote. The project combined advanced geospatial methods with accessible web design to make technical outputs meaningful and actionable for a general audience.</div>
-          <a href="https://www.figma.com/proto/DQQdoqkyrZIihxVoRdX7qW/Hotspotters---Vote-for-Watchtower?node-id=780-1074&t=LAj0p059KCPO23OE-1" target="_blank" rel="noopener" class="proj-link" style="display:block;text-decoration:none;">View prototype &rarr;</a>
+
+      <!-- 4: IDHV Watchtower — content left, photo right -->
+      <div class="proj-card-v">
+        <div class="proj-card-header">
+          <div style="display:flex;align-items:baseline;gap:12px;">
+            <span class="proj-title">Groenlo Wildlife Watchtower: Thermal Activity &amp; Viewshed Analysis</span>
+            <span class="proj-course-label">IDHV</span>
+          </div>
+          <span class="proj-year">2025</span>
+        </div>
+        <div class="proj-card-body flip">
+          <div class="proj-photo"><img src="past_visualizations/IDHV_heatmap.png" alt="IDHV Heatmap" /></div>
+          <div class="proj-content">
+            <div>
+              <div class="proj-section-label">Description</div>
+              <p class="proj-desc-text">Engaged the public in selecting the location for a new wildlife watchtower in Groenlo through a participatory digital platform. Early morning drone flights with thermal sensors captured wildlife activity across three candidate sites. TLS LiDAR was used for viewshed analyses showing what visitors would see from each tower. Results were incorporated into a Figma-designed clickable website where members of the public could review the evidence and cast their vote.</p>
+            </div>
+            <div class="proj-challenges">
+              <div class="proj-section-label">Challenges</div>
+              <ul><li>...</li></ul>
+            </div>
+            <div class="proj-skills-row">
+              <span class="stag">Drone</span>
+              <span class="stag">Thermal Sensors</span>
+              <span class="stag">TLS LiDAR</span>
+              <span class="stag">Viewshed Analysis</span>
+              <span class="stag">Figma</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://www.figma.com/proto/DQQdoqkyrZIihxVoRdX7qW/Hotspotters---Vote-for-Watchtower?node-id=780-1074&t=LAj0p059KCPO23OE-1" target="_blank" rel="noopener" class="proj-link-btn">View Prototype &rarr;</a>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 
