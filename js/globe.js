@@ -1,12 +1,12 @@
 (function() {
-  // Red dots: places lived
+  // Red dots: places lived. pill:true = show always-visible badge label (non-European only)
   var journeyPoints = [
-    { coords: [-122.3321, 47.6062], label: 'Seattle, WA — USA',                       shortLabel: 'Seattle' },
-    { coords: [8.8017,   53.0793],  label: 'Bremen, Germany — 2019–2020',              shortLabel: 'Bremen' },
-    { coords: [11.2558,  43.7696],  label: 'Florence, Italy — 2021',                   shortLabel: 'Florence' },
-    { coords: [-83.6833,  9.9000],  label: 'Turrialba, Costa Rica — 2022',             shortLabel: 'Turrialba' },
-    { coords: [14.4378,  50.0755],  label: 'Prague, Czech Republic — 2022–2025',       shortLabel: 'Prague' },
-    { coords: [5.6651,   51.9685],  label: 'Wageningen, Netherlands — 2025–present',   shortLabel: 'Wageningen' },
+    { coords: [-122.3321, 47.6062], label: 'Seattle, WA — USA',                       pill: true,  pillLabel: 'Seattle, WA' },
+    { coords: [8.8017,   53.0793],  label: 'Bremen, Germany — 2019–2020',              pill: false },
+    { coords: [11.2558,  43.7696],  label: 'Florence, Italy — 2021',                   pill: false },
+    { coords: [-83.6833,  9.9000],  label: 'Turrialba, Costa Rica — 2022',             pill: true,  pillLabel: 'Turrialba, CR' },
+    { coords: [14.4378,  50.0755],  label: 'Prague, Czech Republic — 2022–2025',       pill: false },
+    { coords: [5.6651,   51.9685],  label: 'Wageningen, Netherlands — 2025–present',   pill: false },
   ];
 
   // Yellow dots: single-location projects
@@ -68,13 +68,13 @@
       d3.select(this).attr('cx', p[0]).attr('cy', p[1])
         .attr('display', isVisible(d.coords) ? null : 'none');
     });
-    dotsG.selectAll('.dot-label-j').each(function(d) {
+    dotsG.selectAll('.dot-pill-j').each(function(d) {
       var p = projection(d.coords);
       var goLeft = p[0] > W * 0.78;
+      var pillW = d3.select(this).attr('data-w') - 0;
+      var dx = goLeft ? -(pillW + 12) : 12;
       d3.select(this)
-        .attr('x', p[0] + (goLeft ? -10 : 10))
-        .attr('y', p[1] - 2)
-        .attr('text-anchor', goLeft ? 'end' : 'start')
+        .attr('transform', 'translate(' + (p[0] + dx) + ',' + (p[1] - 2) + ')')
         .attr('display', isVisible(d.coords) ? null : 'none');
     });
     if (nlGlowEl) {
@@ -181,28 +181,41 @@
         .on('mousemove',  function(event) { posTooltip(event, tooltip.innerHTML, false); })
         .on('mouseleave', dotLeave);
 
-      // — Red journey labels (always visible, hide when dot spins away) —
-      dotsG.selectAll('.dot-label-j').data(journeyPoints).enter()
-        .append('text').attr('class', 'dot-label-j')
-        .text(function(d) { return d.shortLabel; })
-        .attr('font-size', '9.5px')
-        .attr('font-family', 'Inter, sans-serif')
-        .attr('font-weight', '500')
-        .attr('fill', '#FB2C36')
-        .attr('pointer-events', 'none')
-        .style('paint-order', 'stroke')
-        .attr('stroke', 'rgba(13,21,38,0.85)')
-        .attr('stroke-width', '2.5px')
-        .attr('stroke-linejoin', 'round')
-        .each(function(d) {
-          var p = projection(d.coords);
-          var goLeft = p[0] > W * 0.78;
-          d3.select(this)
-            .attr('x', p[0] + (goLeft ? -10 : 10))
-            .attr('y', p[1] - 2)
-            .attr('text-anchor', goLeft ? 'end' : 'start')
-            .attr('display', isVisible(d.coords) ? null : 'none');
-        });
+      // — Pill badges for non-European journey dots (always visible) —
+      journeyPoints.forEach(function(d) {
+        if (!d.pill) return;
+        var padX = 10, padY = 5;
+        var g = dotsG.append('g')
+          .datum(d)
+          .attr('class', 'dot-pill-j')
+          .attr('pointer-events', 'none');
+        g.append('rect')
+          .attr('rx', 11).attr('ry', 11)
+          .attr('fill', '#EEE7EF')
+          .attr('stroke', '#FB2C36')
+          .attr('stroke-width', 2.5);
+        var txt = g.append('text')
+          .text(d.pillLabel)
+          .attr('font-size', '9.5px')
+          .attr('font-family', 'Inter, sans-serif')
+          .attr('font-weight', '500')
+          .attr('fill', '#0d1526')
+          .attr('dominant-baseline', 'middle');
+        // Size rect from measured text
+        var bb = txt.node().getBBox();
+        var rw = bb.width + padX * 2, rh = bb.height + padY * 2;
+        g.select('rect')
+          .attr('x', 0).attr('y', 0)
+          .attr('width', rw).attr('height', rh);
+        txt.attr('x', padX).attr('y', rh / 2);
+        g.attr('data-w', rw);
+        // Initial position
+        var p0 = projection(d.coords);
+        var goLeft0 = p0[0] > W * 0.78;
+        var dx0 = goLeft0 ? -(rw + 12) : 12;
+        g.attr('transform', 'translate(' + (p0[0] + dx0) + ',' + (p0[1] - rh / 2) + ')')
+         .attr('display', isVisible(d.coords) ? null : 'none');
+      });
 
       // — Yellow project glows —
       dotsG.selectAll('.dot-glow-p').data(projectPoints).enter()
