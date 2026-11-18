@@ -3,11 +3,11 @@
   // so the red pill labels sit outside the European cluster.
   var journeyPoints = [
     { coords: [-122.3321, 47.6062], label: 'Seattle, WA — USA',                     pill: true, pillLabel: 'Seattle, WA'    },
-    { coords: [8.8017,   53.0793],  label: 'Bremen, Germany — 2019–2020',            pill: true, pillLabel: 'Bremen, DE'     },
+    { coords: [9.0,      63.0],     label: 'Bremen, Germany — 2019–2020',            pill: true, pillLabel: 'Bremen, DE'     },
     { coords: [14.5,     40.5],     label: 'Florence, Italy — 2021',                 pill: true, pillLabel: 'Florence, IT'   },
     { coords: [-83.6833,  9.9000],  label: 'Turrialba, Costa Rica — 2022',           pill: true, pillLabel: 'Turrialba, CR'  },
     { coords: [19.5,     48.5],     label: 'Prague, Czech Republic — 2022–2025',     pill: true, pillLabel: 'Prague, CZ'     },
-    { coords: [5.6651,   51.9685],  label: 'Wageningen, Netherlands — 2025–present', pill: true, pillLabel: 'Wageningen, NL' },
+    { coords: [5.0,      55.5],     label: 'Wageningen, Netherlands — 2025–present', pill: true, pillLabel: 'Wageningen, NL', pillLeft: true },
   ];
 
   // Yellow dots: single-location projects.
@@ -21,9 +21,9 @@
     { coords: [-156.7, 20.9],  label: 'Hawaii — Lahaina Wildfire Burn Severity' },
   ];
 
-  // Yellow grouped dot: all Netherlands projects — moved north (Friesland) to avoid Wageningen red
+  // Yellow grouped dot: all Netherlands projects — central Netherlands (Utrecht area)
   var nlPoint = {
-    coords: [5.3, 53.5],
+    coords: [5.5, 52.0],
     projects: [
       'LiDAR Airport Obstacle Detection — Twente Airport',
       'Wastewater Pipeline Routing — Druten',
@@ -71,11 +71,12 @@
     });
     dotsG.selectAll('.dot-pill-j').each(function(d) {
       var p = projection(d.coords);
-      var goLeft = p[0] > W * 0.78;
-      var pillW = d3.select(this).attr('data-w') - 0;
+      var el = d3.select(this);
+      var pillW = el.attr('data-w') - 0;
+      var pillH = el.select('rect').attr('height') - 0;
+      var goLeft = el.attr('data-left') === '1' || p[0] > W * 0.78;
       var dx = goLeft ? -(pillW + 12) : 12;
-      d3.select(this)
-        .attr('transform', 'translate(' + (p[0] + dx) + ',' + (p[1] - 2) + ')')
+      el.attr('transform', 'translate(' + (p[0] + dx) + ',' + (p[1] - pillH / 2) + ')')
         .attr('display', isVisible(d.coords) ? null : 'none');
     });
     if (nlGlowEl) {
@@ -208,10 +209,10 @@
           .attr('x', 0).attr('y', 0)
           .attr('width', rw).attr('height', rh);
         txt.attr('x', padX).attr('y', rh / 2);
-        g.attr('data-w', rw);
+        g.attr('data-w', rw).attr('data-left', d.pillLeft ? '1' : '0');
         // Initial position
         var p0 = projection(d.coords);
-        var goLeft0 = p0[0] > W * 0.78;
+        var goLeft0 = d.pillLeft || p0[0] > W * 0.78;
         var dx0 = goLeft0 ? -(rw + 12) : 12;
         g.attr('transform', 'translate(' + (p0[0] + dx0) + ',' + (p0[1] - rh / 2) + ')')
          .attr('display', isVisible(d.coords) ? null : 'none');
