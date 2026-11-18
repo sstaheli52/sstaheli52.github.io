@@ -1,28 +1,29 @@
 (function() {
-  // Red dots: places lived. pill:true = show always-visible badge label (non-European only)
+  // Red dots: places lived. Coords for Florence/Prague are swapped with yellow project dots
+  // so the red pill labels sit outside the European cluster.
   var journeyPoints = [
-    { coords: [-122.3321, 47.6062], label: 'Seattle, WA — USA',                       pill: true,  pillLabel: 'Seattle, WA' },
-    { coords: [8.8017,   53.0793],  label: 'Bremen, Germany — 2019–2020',              pill: false },
-    { coords: [11.2558,  43.7696],  label: 'Florence, Italy — 2021',                   pill: false },
-    { coords: [-83.6833,  9.9000],  label: 'Turrialba, Costa Rica — 2022',             pill: true,  pillLabel: 'Turrialba, CR' },
-    { coords: [14.4378,  50.0755],  label: 'Prague, Czech Republic — 2022–2025',       pill: false },
-    { coords: [5.6651,   51.9685],  label: 'Wageningen, Netherlands — 2025–present',   pill: false },
+    { coords: [-122.3321, 47.6062], label: 'Seattle, WA — USA',                     pill: true, pillLabel: 'Seattle, WA'    },
+    { coords: [8.8017,   53.0793],  label: 'Bremen, Germany — 2019–2020',            pill: true, pillLabel: 'Bremen, DE'     },
+    { coords: [14.5,     40.5],     label: 'Florence, Italy — 2021',                 pill: true, pillLabel: 'Florence, IT'   },
+    { coords: [-83.6833,  9.9000],  label: 'Turrialba, Costa Rica — 2022',           pill: true, pillLabel: 'Turrialba, CR'  },
+    { coords: [19.5,     48.5],     label: 'Prague, Czech Republic — 2022–2025',     pill: true, pillLabel: 'Prague, CZ'     },
+    { coords: [5.6651,   51.9685],  label: 'Wageningen, Netherlands — 2025–present', pill: true, pillLabel: 'Wageningen, NL' },
   ];
 
-  // Yellow dots: single-location projects
-  // Italy moved south (Campania) and Czechia moved east (Moravia) to avoid overlap with red dots
+  // Yellow dots: single-location projects.
+  // Florence/Prague positions swapped with red dots above; NL cluster moved north.
   var projectPoints = [
     { coords: [-4.0,   57.5],  label: 'Scotland — Peatland Restoration StoryMap' },
     { coords: [27.9,  -24.1],  label: 'South Africa — Elephant Presence Dashboard' },
     { coords: [-3.5,   40.4],  label: 'Spain — MSc Thesis: Wildfire & Forest Structure' },
-    { coords: [14.5,   40.5],  label: 'Italy — Pine Disease Early Detection' },
-    { coords: [19.5,   48.5],  label: 'Czechia — BSc Thesis: Flood Moisture Sources' },
+    { coords: [11.2558, 43.7696], label: 'Italy — Pine Disease Early Detection' },
+    { coords: [14.4378, 50.0755], label: 'Czechia — BSc Thesis: Flood Moisture Sources' },
     { coords: [-156.7, 20.9],  label: 'Hawaii — Lahaina Wildfire Burn Severity' },
   ];
 
-  // Yellow grouped dot: all Netherlands projects
+  // Yellow grouped dot: all Netherlands projects — moved north (Friesland) to avoid Wageningen red
   var nlPoint = {
-    coords: [5.3, 52.3],
+    coords: [5.3, 53.5],
     projects: [
       'LiDAR Airport Obstacle Detection — Twente Airport',
       'Wastewater Pipeline Routing — Druten',
@@ -181,9 +182,8 @@
         .on('mousemove',  function(event) { posTooltip(event, tooltip.innerHTML, false); })
         .on('mouseleave', dotLeave);
 
-      // — Pill badges for non-European journey dots (always visible) —
+      // — Pill badges for all journey dots (always visible) —
       journeyPoints.forEach(function(d) {
-        if (!d.pill) return;
         var padX = 10, padY = 5;
         var g = dotsG.append('g')
           .datum(d)
