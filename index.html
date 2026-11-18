@@ -3,104 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sophia Staheli</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Shrikhand&family=Inter:wght@300;400;500&display=swap');
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  html, body { width: 100%; min-height: 100vh; margin: 0; padding: 0; background: #0d1526; }
-  .c { font-family: 'Inter', sans-serif; background: #0d1526; color: #EEE7EF; width: 100%; }
-
-  /* NAV */
-  .nav { display: flex; justify-content: center; padding: 14px 40px; position: sticky; top: 16px; z-index: 50; }
-  .nav-inner { display: flex; gap: 32px; font-size: 12px; background: rgba(13,21,38,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 40px; padding: 10px 28px; box-shadow: 0 2px 18px rgba(0,0,0,0.35); border: 0.5px solid rgba(100,150,220,0.2); }
-  .nav-inner a { color: #9eadc8; text-decoration: none; transition: color 0.15s; }
-  .nav-inner a:hover { color: #EEE7EF; }
-
-  /* HERO */
-  .hero-new { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 70px); padding: 48px 40px; gap: 37px; }
-  .hero-title { font-family: 'Shrikhand', serif; font-size: 36px; color: #EEE7EF; text-align: center; }
-  .hero-globe-col { width: 100%; max-width: 1040px; position: relative; }
-  .photo-strip { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 24px; }
-  .photo-strip img { width: 173px; height: 233px; object-fit: cover; object-position: center top; border-radius: 10px; display: block; }
-
-  /* SECTION HEADER */
-  .section-header { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: #C78A9A; margin-bottom: 16px; }
-
-  /* MAP */
-  .map-section { margin: 0 0 16px; padding-top: 72px; }
-  .map-wrap { position: relative; aspect-ratio: 2.8 / 1; }
-  .map-img-clip { border-radius: 18px; overflow: hidden; position: absolute; inset: 0; }
-  .map-img-clip img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
-
-  .mdot { position: absolute; width: 11px; height: 11px; border-radius: 50%; background: #FB2C36; border: 2px solid #fff; cursor: pointer; z-index: 2; }
-  .tooltip {
-    display: none; position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
-    background: #111d33; color: #EEE7EF; font-size: 10px; font-family: 'Inter', sans-serif;
-    padding: 8px 12px; border-radius: 8px; pointer-events: none; z-index: 100;
-    line-height: 1.6; width: 200px; white-space: normal; border: 0.5px solid #2a3d6a;
-  }
-  .tooltip strong { display: block; font-size: 11px; color: #DDB5B6; margin-bottom: 3px; font-weight: 500; }
-  .mdot:hover .tooltip { display: block; }
-  .mdot:hover { background: #FEE2D7; }
-
-  /* TIMELINE */
-  .tl-wrap { margin: 0 40px 48px; padding-top: 60px; }
-
-  /* PROJECTS */
-  .projects { margin: 0 40px 40px; padding-top: 60px; }
-  .proj-list { display: flex; flex-direction: column; gap: 20px; }
-  .proj-card-v { border-radius: 14px; overflow: hidden; border: 0.5px solid #1e3058; background: #111d33; }
-  .proj-card-header { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 20px; border-bottom: 0.5px solid #1e3058; }
-  .proj-card-header .proj-title { font-size: 13px; font-weight: 500; color: #EEE7EF; }
-  .proj-card-header .proj-course-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #C78A9A; margin-left: 12px; }
-  .proj-card-header .proj-year { font-size: 12px; color: #6e80a0; }
-  .proj-card-body { display: flex; min-height: 280px; }
-  .proj-card-body.flip { flex-direction: row-reverse; }
-  .proj-photo { flex: 0 0 44%; background: #1a2d4a; }
-  .proj-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .proj-content { flex: 1; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
-  .proj-section-label { font-size: 10px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: #C78A9A; margin-bottom: 5px; }
-  .proj-desc-text { font-size: 12px; color: #8a9ab8; line-height: 1.65; }
-  .proj-challenges ul { margin: 0; padding-left: 16px; font-size: 12px; color: #8a9ab8; line-height: 1.65; }
-  .proj-skills-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
-  .proj-links { display: flex; gap: 8px; flex-wrap: wrap; }
-  .proj-link-btn { font-size: 11px; font-weight: 500; padding: 7px 16px; border-radius: 20px; border: 0.5px solid #2a3d6a; color: #9eadc8; text-decoration: none; display: inline-block; transition: background 0.15s, color 0.15s; }
-  .proj-link-btn:hover { background: #1a2d4a; color: #EEE7EF; }
-  .proj-link-btn.placeholder { opacity: 0.4; cursor: default; pointer-events: none; }
-  .proj-photo-placeholder { flex: 0 0 44%; background: #1a2d4a; display: flex; align-items: center; justify-content: center; min-height: 280px; }
-  .proj-photo-placeholder span { font-size: 11px; color: #3a5080; letter-spacing: 1px; text-transform: uppercase; }
-
-  /* SKILLS */
-  .skills { margin: 0 40px 40px; padding: 22px 24px; background: #111d33; border-radius: 16px; border: 0.5px solid #1e3058; }
-  .skill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .stag { background: #1a2d4a; color: #9eadc8; font-size: 12px; padding: 5px 14px; border-radius: 20px; border: 0.5px solid #2a3d6a; }
-  .stag.rs { background: #221a30; color: #C78A9A; border-color: #3d2a4a; }
-
-  /* CONTACT */
-  .contact { margin: 0 40px 40px; background: #111d33; border-radius: 16px; padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; border: 0.5px solid #1e3058; }
-  .contact-h { font-family: 'Shrikhand', serif; font-size: 28px; color: #EEE7EF; }
-  .contact-s { font-size: 12px; color: #9eadc8; margin-top: 5px; }
-  .btn-row { display: flex; gap: 10px; }
-  .cbtn { background: #EEE7EF; color: #0d1526; font-size: 12px; font-weight: 500; padding: 9px 20px; border-radius: 20px; border: none; font-family: inherit; cursor: pointer; text-decoration: none; display: inline-block; }
-
-  /* GLOBE */
-  #globe-wrap { position: relative; }
-  #globe-el { width: 100%; display: flex; align-items: center; justify-content: center; }
-  #globe-el svg { cursor: grab; display: block; }
-  #globe-el svg.dragging { cursor: grabbing; }
-  #globe-tooltip {
-    position: absolute; background: #111d33; color: #EEE7EF;
-    font-family: 'Inter', sans-serif; font-size: 11px; padding: 10px 14px;
-    border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-    max-width: 240px; line-height: 1.6; pointer-events: none; display: none;
-    z-index: 10; border: 0.5px solid #2a3d6a;
-  }
-  #globe-tooltip strong { display: block; font-size: 11px; color: #DDB5B6; margin-bottom: 4px; font-weight: 500; }
-
-  #about, #map, #projects, #skills, #contact { scroll-margin-top: 80px; }
-</style>
 
 <div class="c">
   <nav class="nav">
@@ -119,9 +25,9 @@
       </div>
     </div>
     <div class="photo-strip">
-      <img src="Design/sophia1.jpg" alt="Sophia at the coast" />
-      <img src="Design/sophia3.webp" alt="Sophia at graduation" />
-      <img src="Design/sophia2.jpg" alt="Sophia overlooking the sea" />
+      <img src="img/sophia1.jpg" alt="Sophia at the coast" />
+      <img src="img/sophia3.webp" alt="Sophia at graduation" />
+      <img src="img/sophia2.jpg" alt="Sophia overlooking the sea" />
     </div>
   </div>
 
@@ -233,7 +139,7 @@
           <span class="proj-year">2024</span>
         </div>
         <div class="proj-card-body">
-          <div class="proj-photo"><img src="past_visualizations/GIS_in_context_peatland.png" alt="Scotland Peatlands" /></div>
+          <div class="proj-photo"><img src="img/projects/scotland/peatland.png" alt="Scotland Peatlands" /></div>
           <div class="proj-content">
             <div>
               <div class="proj-section-label">Description</div>
@@ -266,7 +172,7 @@
           <span class="proj-year">2025</span>
         </div>
         <div class="proj-card-body flip">
-          <div class="proj-photo"><img src="past_visualizations/Geoscripting_elephant_dashboard.jpeg" alt="Elephant Dashboard" /></div>
+          <div class="proj-photo"><img src="img/projects/elephant/dashboard.jpeg" alt="Elephant Dashboard" /></div>
           <div class="proj-content">
             <div>
               <div class="proj-section-label">Description</div>
@@ -300,7 +206,7 @@
           <span class="proj-year">2025</span>
         </div>
         <div class="proj-card-body">
-          <div class="proj-photo"><img src="past_visualizations/Geotools.png" alt="Pipeline Routing" /></div>
+          <div class="proj-photo"><img src="img/projects/pipeline/routing.png" alt="Pipeline Routing" /></div>
           <div class="proj-content">
             <div>
               <div class="proj-section-label">Description</div>
@@ -333,7 +239,7 @@
           <span class="proj-year">2025</span>
         </div>
         <div class="proj-card-body flip">
-          <div class="proj-photo"><img src="past_visualizations/IDHV_heatmap.png" alt="IDHV Heatmap" /></div>
+          <div class="proj-photo"><img src="img/projects/watchtower/heatmap.png" alt="IDHV Heatmap" /></div>
           <div class="proj-content">
             <div>
               <div class="proj-section-label">Description</div>
@@ -622,7 +528,7 @@
     </div>
     <div class="btn-row">
       <a href="https://www.linkedin.com/in/sophia-staheli" target="_blank" rel="noopener" class="cbtn">LinkedIn</a>
-      <a href="Sophia_Staheli_CV_0725.pdf" download="Sophia_Staheli_CV.pdf" target="_blank" rel="noopener" class="cbtn">Download CV</a>
+      <a href="files/Sophia_Staheli_CV.pdf" download="Sophia_Staheli_CV.pdf" target="_blank" rel="noopener" class="cbtn">Download CV</a>
     </div>
   </div>
 
@@ -630,231 +536,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3/dist/topojson-client.min.js"></script>
-<script>
-(function() {
-  // Red dots: places lived
-  var journeyPoints = [
-    { coords: [-122.3321, 47.6062], label: 'Seattle, WA — USA' },
-    { coords: [8.8017,   53.0793], label: 'Bremen, Germany — 2019–2020' },
-    { coords: [11.2558,  43.7696], label: 'Florence, Italy — 2021' },
-    { coords: [-83.6833,  9.9000], label: 'Turrialba, Costa Rica — 2022' },
-    { coords: [14.4378,  50.0755], label: 'Prague, Czech Republic — 2022–2025' },
-    { coords: [5.6651,   51.9685], label: 'Wageningen, Netherlands — 2025–present' },
-  ];
-
-  // Yellow dots: single-location projects
-  var projectPoints = [
-    { coords: [-4.0,   57.5],  label: 'Scotland — Peatland Restoration StoryMap' },
-    { coords: [27.9,  -24.1],  label: 'South Africa — Elephant Presence Dashboard' },
-    { coords: [-3.5,   40.4],  label: 'Spain — MSc Thesis: Wildfire & Forest Structure' },
-    { coords: [10.3,   43.7],  label: 'Italy — Pine Disease Early Detection' },
-    { coords: [15.5,   49.8],  label: 'Czechia — BSc Thesis: Flood Moisture Sources' },
-    { coords: [-156.7, 20.9],  label: 'Hawaii — Lahaina Wildfire Burn Severity' },
-  ];
-
-  // Yellow grouped dot: all Netherlands projects
-  var nlPoint = {
-    coords: [5.3, 52.3],
-    projects: [
-      'LiDAR Airport Obstacle Detection — Twente Airport',
-      'Wastewater Pipeline Routing — Druten',
-      'Wildlife Watchtower — Groenlo',
-      'Land Cover Classification — Oosterbeek',
-    ]
-  };
-
-  var wrap = document.getElementById('globe-el');
-  var tooltip = document.getElementById('globe-tooltip');
-  var W = 800, H = 500, R = 230;
-
-  var projection = d3.geoOrthographic()
-    .scale(R).translate([W/2, H/2]).clipAngle(90).rotate([10, -25, 0]);
-  var path = d3.geoPath().projection(projection);
-
-  var svg = d3.select('#globe-el').append('svg')
-    .attr('viewBox', '0 0 ' + W + ' ' + H).attr('width', '100%');
-
-  svg.append('rect').attr('width', W).attr('height', H).attr('fill', 'none');
-  svg.append('circle').attr('cx', W/2).attr('cy', H/2).attr('r', R).attr('fill', '#C7E5FF');
-
-  var graticule = d3.geoGraticule()();
-  var gratPath = svg.append('path').datum(graticule)
-    .attr('fill', 'none').attr('stroke', '#a8d4f0').attr('stroke-width', 0.6).attr('d', path);
-  var landPath = svg.append('path')
-    .attr('fill', '#93AB9F').attr('stroke', '#7a9490').attr('stroke-width', 0.5);
-  var dotsG = svg.append('g');
-
-  // NL dot references (set after fetch)
-  var nlGlowEl = null, nlMainEl = null;
-
-  function isVisible(coords) {
-    var rot = projection.rotate();
-    return d3.geoDistance(coords, [-rot[0], -rot[1]]) < Math.PI / 2;
-  }
-
-  function redraw() {
-    gratPath.attr('d', path);
-    landPath.attr('d', path);
-    dotsG.selectAll('.dot-glow-j,.dot-main-j,.dot-glow-p,.dot-main-p').each(function(d) {
-      var p = projection(d.coords);
-      d3.select(this).attr('cx', p[0]).attr('cy', p[1])
-        .attr('display', isVisible(d.coords) ? null : 'none');
-    });
-    if (nlGlowEl) {
-      var pNl = projection(nlPoint.coords);
-      var vNl = isVisible(nlPoint.coords);
-      nlGlowEl.attr('cx', pNl[0]).attr('cy', pNl[1]).attr('display', vNl ? null : 'none');
-      nlMainEl.attr('cx', pNl[0]).attr('cy', pNl[1]).attr('display', vNl ? null : 'none');
-    }
-  }
-
-  // Hover-pause state
-  var hovering = false, tooltipHovered = false;
-
-  tooltip.addEventListener('mouseenter', function() {
-    tooltipHovered = true; hovering = true;
-  });
-  tooltip.addEventListener('mouseleave', function() {
-    tooltipHovered = false; hovering = false;
-    tooltip.style.display = 'none';
-    tooltip.style.pointerEvents = 'none';
-  });
-
-  function posTooltip(event, html, allowClicks) {
-    var rect = document.getElementById('globe-wrap').getBoundingClientRect();
-    var x = event.clientX - rect.left, y = event.clientY - rect.top;
-    var left = (x + 16 + 260 > wrap.offsetWidth) ? x - 276 : x + 16;
-    tooltip.style.left = left + 'px';
-    tooltip.style.top = Math.max(8, y - 10) + 'px';
-    tooltip.style.pointerEvents = allowClicks ? 'auto' : 'none';
-    tooltip.innerHTML = html;
-    tooltip.style.display = 'block';
-  }
-
-  function dotLeave() {
-    setTimeout(function() {
-      if (!tooltipHovered) {
-        hovering = false;
-        tooltip.style.display = 'none';
-        tooltip.style.pointerEvents = 'none';
-      }
-    }, 60);
-  }
-
-  // Drag to rotate
-  var dragOrigin = null, rotOrigin = null;
-  svg.on('mousedown', function(event) {
-    var cls = (event.target.className && event.target.className.baseVal) || '';
-    if (cls.indexOf('dot-') >= 0) return;
-    dragOrigin = [event.clientX, event.clientY];
-    rotOrigin = projection.rotate().slice();
-    svg.classed('dragging', true);
-    tooltip.style.display = 'none'; hovering = false;
-  });
-  d3.select(document)
-    .on('mousemove.globe', function(event) {
-      if (!dragOrigin) return;
-      var dx = event.clientX - dragOrigin[0], dy = event.clientY - dragOrigin[1];
-      projection.rotate([
-        rotOrigin[0] + dx * 0.35,
-        Math.max(-80, Math.min(80, rotOrigin[1] - dy * 0.35)),
-        rotOrigin[2]
-      ]);
-      redraw();
-    })
-    .on('mouseup.globe', function() { dragOrigin = null; svg.classed('dragging', false); });
-
-  // Auto-spin — pauses while dragging or hovering a dot
-  (function spinLoop() {
-    if (!dragOrigin && !hovering) {
-      var rot = projection.rotate();
-      projection.rotate([rot[0] + 0.08, rot[1], rot[2]]);
-      redraw();
-    }
-    requestAnimationFrame(spinLoop);
-  })();
-
-  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json')
-    .then(function(r) { return r.json(); })
-    .then(function(world) {
-      landPath.datum(topojson.feature(world, world.objects.land));
-      redraw();
-
-      // — Red journey glows —
-      dotsG.selectAll('.dot-glow-j').data(journeyPoints).enter()
-        .append('circle').attr('class', 'dot-glow-j')
-        .attr('r', 13).attr('fill', '#FB2C36').attr('opacity', 0.22)
-        .each(function(d) {
-          var p = projection(d.coords);
-          d3.select(this).attr('cx', p[0]).attr('cy', p[1])
-            .attr('display', isVisible(d.coords) ? null : 'none');
-        });
-
-      // — Red journey dots —
-      dotsG.selectAll('.dot-main-j').data(journeyPoints).enter()
-        .append('circle').attr('class', 'dot-main-j')
-        .attr('r', 7).attr('fill', '#ffffff').attr('stroke', '#FB2C36').attr('stroke-width', 2)
-        .style('cursor', 'pointer')
-        .each(function(d) {
-          var p = projection(d.coords);
-          d3.select(this).attr('cx', p[0]).attr('cy', p[1])
-            .attr('display', isVisible(d.coords) ? null : 'none');
-        })
-        .on('mouseenter', function(event, d) { hovering = true; posTooltip(event, d.label, false); })
-        .on('mousemove',  function(event) { posTooltip(event, tooltip.innerHTML, false); })
-        .on('mouseleave', dotLeave);
-
-      // — Yellow project glows —
-      dotsG.selectAll('.dot-glow-p').data(projectPoints).enter()
-        .append('circle').attr('class', 'dot-glow-p')
-        .attr('r', 13).attr('fill', '#FBBF24').attr('opacity', 0.28)
-        .each(function(d) {
-          var p = projection(d.coords);
-          d3.select(this).attr('cx', p[0]).attr('cy', p[1])
-            .attr('display', isVisible(d.coords) ? null : 'none');
-        });
-
-      // — Yellow project dots —
-      dotsG.selectAll('.dot-main-p').data(projectPoints).enter()
-        .append('circle').attr('class', 'dot-main-p')
-        .attr('r', 7).attr('fill', '#FBBF24').attr('stroke', '#fff').attr('stroke-width', 1.5)
-        .style('cursor', 'pointer')
-        .each(function(d) {
-          var p = projection(d.coords);
-          d3.select(this).attr('cx', p[0]).attr('cy', p[1])
-            .attr('display', isVisible(d.coords) ? null : 'none');
-        })
-        .on('mouseenter', function(event, d) { hovering = true; posTooltip(event, d.label, false); })
-        .on('mousemove',  function(event) { posTooltip(event, tooltip.innerHTML, false); })
-        .on('mouseleave', dotLeave);
-
-      // — NL grouped glow (larger) —
-      var pNl0 = projection(nlPoint.coords);
-      var vNl0 = isVisible(nlPoint.coords);
-      nlGlowEl = dotsG.append('circle').attr('class', 'dot-glow-nl')
-        .attr('r', 20).attr('fill', '#FBBF24').attr('opacity', 0.28)
-        .attr('cx', pNl0[0]).attr('cy', pNl0[1]).attr('display', vNl0 ? null : 'none');
-
-      // — NL grouped dot (larger) —
-      nlMainEl = dotsG.append('circle').attr('class', 'dot-main-nl')
-        .attr('r', 12).attr('fill', '#FBBF24').attr('stroke', '#fff').attr('stroke-width', 2)
-        .style('cursor', 'pointer')
-        .attr('cx', pNl0[0]).attr('cy', pNl0[1]).attr('display', vNl0 ? null : 'none')
-        .on('mouseenter', function(event) {
-          hovering = true;
-          var html = '<strong style="display:block;margin-bottom:8px;color:#EEE7EF;font-size:12px;">Netherlands Projects</strong>'
-            + nlPoint.projects.map(function(p) {
-                return '<div style="padding:3px 0;color:#9eadc8;cursor:pointer;transition:color 0.15s;" '
-                  + 'onmouseenter="this.style.color=\'#EEE7EF\'" onmouseleave="this.style.color=\'#9eadc8\'" '
-                  + 'onclick="document.getElementById(\'projects\').scrollIntoView({behavior:\'smooth\'})">'
-                  + p + '</div>';
-              }).join('');
-          posTooltip(event, html, true);
-        })
-        .on('mouseleave', dotLeave);
-    });
-})();
-</script>
+<script src="js/globe.js"></script>
 
 </body>
 </html>

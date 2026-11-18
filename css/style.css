@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&family=Inter:wght@300;400;500&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+html, body { width: 100%; min-height: 100vh; margin: 0; padding: 0; background: #0d1526; }
+.c { font-family: 'Inter', sans-serif; background: #0d1526; color: #EEE7EF; width: 100%; }
+
+/* NAV */
+.nav { display: flex; justify-content: center; padding: 14px 40px; position: sticky; top: 16px; z-index: 50; }
+.nav-inner { display: flex; gap: 32px; font-size: 12px; background: rgba(13,21,38,0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 40px; padding: 10px 28px; box-shadow: 0 2px 18px rgba(0,0,0,0.35); border: 0.5px solid rgba(100,150,220,0.2); }
+.nav-inner a { color: #9eadc8; text-decoration: none; transition: color 0.15s; }
+.nav-inner a:hover { color: #EEE7EF; }
+
+/* HERO */
+.hero-new { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 70px); padding: 48px 40px; gap: 37px; }
+.hero-title { font-family: 'Shrikhand', serif; font-size: 36px; color: #EEE7EF; text-align: center; }
+.hero-globe-col { width: 100%; max-width: 1040px; position: relative; }
+.photo-strip { display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 24px; }
+.photo-strip img { width: 173px; height: 233px; object-fit: cover; object-position: center top; border-radius: 10px; display: block; }
+
+/* SECTION HEADER */
+.section-header { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: #C78A9A; margin-bottom: 16px; }
+
+/* MAP */
+.map-section { margin: 0 0 16px; padding-top: 72px; }
+.map-wrap { position: relative; aspect-ratio: 2.8 / 1; }
+.map-img-clip { border-radius: 18px; overflow: hidden; position: absolute; inset: 0; }
+.map-img-clip img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+
+.mdot { position: absolute; width: 11px; height: 11px; border-radius: 50%; background: #FB2C36; border: 2px solid #fff; cursor: pointer; z-index: 2; }
+.tooltip {
+  display: none; position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+  background: #111d33; color: #EEE7EF; font-size: 10px; font-family: 'Inter', sans-serif;
+  padding: 8px 12px; border-radius: 8px; pointer-events: none; z-index: 100;
+  line-height: 1.6; width: 200px; white-space: normal; border: 0.5px solid #2a3d6a;
+}
+.tooltip strong { display: block; font-size: 11px; color: #DDB5B6; margin-bottom: 3px; font-weight: 500; }
+.mdot:hover .tooltip { display: block; }
+.mdot:hover { background: #FEE2D7; }
+
+/* TIMELINE */
+.tl-wrap { margin: 0 40px 48px; padding-top: 60px; }
+
+/* PROJECTS */
+.projects { margin: 0 40px 40px; padding-top: 60px; }
+.proj-list { display: flex; flex-direction: column; gap: 20px; }
+.proj-card-v { border-radius: 14px; overflow: hidden; border: 0.5px solid #1e3058; background: #111d33; }
+.proj-card-header { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 20px; border-bottom: 0.5px solid #1e3058; }
+.proj-card-header .proj-title { font-size: 13px; font-weight: 500; color: #EEE7EF; }
+.proj-card-header .proj-course-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #C78A9A; margin-left: 12px; }
+.proj-card-header .proj-year { font-size: 12px; color: #6e80a0; }
+.proj-card-body { display: flex; min-height: 280px; }
+.proj-card-body.flip { flex-direction: row-reverse; }
+.proj-photo { flex: 0 0 44%; background: #1a2d4a; }
+.proj-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.proj-content { flex: 1; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
+.proj-section-label { font-size: 10px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; color: #C78A9A; margin-bottom: 5px; }
+.proj-desc-text { font-size: 12px; color: #8a9ab8; line-height: 1.65; }
+.proj-challenges ul { margin: 0; padding-left: 16px; font-size: 12px; color: #8a9ab8; line-height: 1.65; }
+.proj-skills-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+.proj-links { display: flex; gap: 8px; flex-wrap: wrap; }
+.proj-link-btn { font-size: 11px; font-weight: 500; padding: 7px 16px; border-radius: 20px; border: 0.5px solid #2a3d6a; color: #9eadc8; text-decoration: none; display: inline-block; transition: background 0.15s, color 0.15s; }
+.proj-link-btn:hover { background: #1a2d4a; color: #EEE7EF; }
+.proj-link-btn.placeholder { opacity: 0.4; cursor: default; pointer-events: none; }
+.proj-photo-placeholder { flex: 0 0 44%; background: #1a2d4a; display: flex; align-items: center; justify-content: center; min-height: 280px; }
+.proj-photo-placeholder span { font-size: 11px; color: #3a5080; letter-spacing: 1px; text-transform: uppercase; }
+
+/* SKILLS */
+.skills { margin: 0 40px 40px; padding: 22px 24px; background: #111d33; border-radius: 16px; border: 0.5px solid #1e3058; }
+.skill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.stag { background: #1a2d4a; color: #9eadc8; font-size: 12px; padding: 5px 14px; border-radius: 20px; border: 0.5px solid #2a3d6a; }
+.stag.rs { background: #221a30; color: #C78A9A; border-color: #3d2a4a; }
+
+/* CONTACT */
+.contact { margin: 0 40px 40px; background: #111d33; border-radius: 16px; padding: 28px 32px; display: flex; justify-content: space-between; align-items: center; border: 0.5px solid #1e3058; }
+.contact-h { font-family: 'Shrikhand', serif; font-size: 28px; color: #EEE7EF; }
+.contact-s { font-size: 12px; color: #9eadc8; margin-top: 5px; }
+.btn-row { display: flex; gap: 10px; }
+.cbtn { background: #EEE7EF; color: #0d1526; font-size: 12px; font-weight: 500; padding: 9px 20px; border-radius: 20px; border: none; font-family: inherit; cursor: pointer; text-decoration: none; display: inline-block; }
+
+/* GLOBE */
+#globe-wrap { position: relative; }
+#globe-el { width: 100%; display: flex; align-items: center; justify-content: center; }
+#globe-el svg { cursor: grab; display: block; }
+#globe-el svg.dragging { cursor: grabbing; }
+#globe-tooltip {
+  position: absolute; background: #111d33; color: #EEE7EF;
+  font-family: 'Inter', sans-serif; font-size: 11px; padding: 10px 14px;
+  border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  max-width: 240px; line-height: 1.6; pointer-events: none; display: none;
+  z-index: 10; border: 0.5px solid #2a3d6a;
+}
+#globe-tooltip strong { display: block; font-size: 11px; color: #DDB5B6; margin-bottom: 4px; font-weight: 500; }
+
+#about, #map, #projects, #skills, #contact { scroll-margin-top: 80px; }
