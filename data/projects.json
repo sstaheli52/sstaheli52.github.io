@@ -1,0 +1,145 @@
+[
+  {
+    "id": "scotland-peatlands",
+    "title": "Scotland's Peatlands: Opportunities for Investors",
+    "course": "GIS in Context",
+    "year": "2024",
+    "image": "img/projects/scotland/peatland.png",
+    "description": "A StoryMap designed to inform and engage potential investors in Scottish peatland restoration. Peatlands cover approximately 20% of Scotland and store around 1.6 million tonnes of carbon, yet an estimated 80% are currently degraded. The StoryMap communicated the ecological and financial case for restoration, combining narrative with spatial data to highlight peatland distribution and calculate carbon storage in both shallow and deep peat layers.",
+    "challenges": [],
+    "skills": ["ArcGIS StoryMaps", "Spatial Analysis", "Carbon Modeling", "Data Visualization"],
+    "links": [
+      { "label": "View StoryMap →", "url": "https://storymaps.arcgis.com/stories/8bfadb89de5b4b60bb6b278223f3c407" }
+    ]
+  },
+  {
+    "id": "elephant-dashboard",
+    "title": "Elephant Presence Modeling — Welgevonden Reserve",
+    "course": "Geoscripting",
+    "year": "2025",
+    "image": "img/projects/elephant/dashboard.jpeg",
+    "description": "Used elephant tracking data and environmental covariates to model and predict elephant presence within the Welgevonden Game Reserve in South Africa. A logistic regression model was trained on variables such as distance to roads, elevation, temperature, and time of day, and evaluated using ROC curves and AUC metrics. Results were delivered through an interactive R Shiny dashboard allowing users to explore KDE heatmaps and adjust parameters to visualize predicted probability of presence.",
+    "challenges": [],
+    "skills": ["R", "Shiny", "KDE", "Logistic Regression", "ROC / AUC"],
+    "links": [
+      { "label": "Link coming soon", "url": null }
+    ]
+  },
+  {
+    "id": "pipeline-routing",
+    "title": "Wastewater Pipeline Routing — Druten",
+    "course": "Geotools",
+    "year": "2025",
+    "image": "img/projects/pipeline/routing.png",
+    "description": "Determined optimal pipeline routes connecting industrial wastewater areas to the largest water refinement basin in Druten, Netherlands. A cost raster was constructed from multiple spatial constraints with suitability values scaled 1–100. Least-cost path analysis was applied to calculate the most efficient connections, with all outputs consolidated into a single map deliverable displaying routes, wastewater areas, and the suitability cost raster.",
+    "challenges": [],
+    "skills": ["ArcGIS Pro", "Cost Raster", "Least-Cost Path", "Spatial Analysis"],
+    "links": [
+      { "label": "Link coming soon", "url": null }
+    ]
+  },
+  {
+    "id": "watchtower-groenlo",
+    "title": "Groenlo Wildlife Watchtower: Thermal Activity & Viewshed Analysis",
+    "course": "IDHV",
+    "year": "2025",
+    "image": "img/projects/watchtower/heatmap.png",
+    "description": "Engaged the public in selecting the location for a new wildlife watchtower in Groenlo through a participatory digital platform. Early morning drone flights with thermal sensors captured wildlife activity across three candidate sites. TLS LiDAR was used for viewshed analyses showing what visitors would see from each tower. Results were incorporated into a Figma-designed clickable website where members of the public could review the evidence and cast their vote.",
+    "challenges": [],
+    "skills": ["Drone", "Thermal Sensors", "TLS LiDAR", "Viewshed Analysis", "Figma"],
+    "links": [
+      { "label": "View Prototype →", "url": "https://www.figma.com/proto/DQQdoqkyrZIihxVoRdX7qW/Hotspotters---Vote-for-Watchtower?node-id=780-1074&t=LAj0p059KCPO23OE-1" }
+    ]
+  },
+  {
+    "id": "msc-thesis",
+    "title": "Separating Wildfire & Management Effects on Forest Structure — Spanish Forests",
+    "course": "MSc Thesis",
+    "year": "2026 – present",
+    "image": null,
+    "description": "Pairing pre- and post-fire GEDI LiDAR footprints across four 2022 Spanish fires to separate the structural effects of wildfire from post-fire management (salvage logging). Linear mixed-effects models quantify the extra canopy height loss due to management, and a Sentinel-1 / ALOS PALSAR-2 fusion model is fine-tuned to predict monthly canopy height validated against Spanish national airborne LiDAR.",
+    "challenges": [],
+    "skills": ["GEDI LiDAR", "Sentinel-1", "ALOS PALSAR-2", "PlanetScope", "Mixed-Effects Models", "Python", "R"],
+    "links": [
+      { "label": "Link coming soon", "url": null }
+    ]
+  },
+  {
+    "id": "lidar-airport",
+    "title": "LiDAR-Based Airport Obstacle Detection — Twente Airport",
+    "course": "Academic Consultancy Training",
+    "year": "2026",
+    "image": null,
+    "description": "Built an end-to-end automated pipeline for client Antea Group that maps airport obstacles (trees and buildings) and their heights above ground. Integrated open Dutch geodata — AHN LiDAR point clouds, aerial RGB and infrared imagery, DSM/DTM elevation models, and BAG building footprints — to detect tree crowns via NDVI and canopy height models, and estimate building heights from classified LiDAR points.",
+    "challenges": [],
+    "skills": ["Python", "LiDAR / AHN", "NDVI", "Canopy Height Model", "GeoPandas", "GeoPackage"],
+    "links": [
+      { "label": "Link coming soon", "url": null }
+    ]
+  },
+  {
+    "id": "pine-disease",
+    "title": "Early Detection of Pine Disease from Sentinel-2 — San Rossore, Italy",
+    "course": "Advanced Earth Observation",
+    "year": "2026",
+    "image": null,
+    "description": "Adapted a PROSAIL radiative transfer and Gradient Boosting workflow to retrieve canopy water content (R² = 0.59) and chlorophyll content (R² = 0.78) from Sentinel-2 imagery, separating healthy from fungus-infected pines in San Rossore National Park. A four-year Sentinel-2 time series was processed in Google Earth Engine, with ANOVA and correlation analysis confirming statistically significant stress signals (p < 0.001).",
+    "challenges": [],
+    "skills": ["PROSAIL", "Gradient Boosting", "Sentinel-2", "Google Earth Engine", "R", "Time Series"],
+    "links": [
+      { "label": "Link coming soon", "url": null }
+    ]
+  },
+  {
+    "id": "land-cover-oosterbeek",
+    "title": "Sentinel-2 Land Cover Classification — Oosterbeek",
+    "course": "Machine Learning",
+    "year": "2026",
+    "image": null,
+    "description": "Classified 10 land cover classes from 12-band Sentinel-2 imagery of Oosterbeek, Netherlands, achieving 79% overall accuracy and weighted F1 of 0.78 with a tuned k-nearest neighbors model. Tested k from 1 to 50 neighbors on a 70/30 train-test split, analysing the bias-variance trade-off, and reached F1 scores of 0.96 for water and 0.91 for herbaceous vegetation.",
+    "challenges": [],
+    "skills": ["Python", "scikit-learn", "k-NN", "Sentinel-2", "Land Cover Mapping", "Accuracy Assessment"],
+    "links": [
+      { "label": "Link coming soon", "url": null }
+    ]
+  },
+  {
+    "id": "vision-transformers",
+    "title": "Land-Use Classification with Vision Transformers",
+    "course": "Deep Learning",
+    "year": "2026",
+    "image": null,
+    "description": "Achieved a test F1 of 0.93 on multi-label land-use classification of satellite imagery by partially unfreezing a satellite-pretrained Vision Transformer (DINOv3), and 0.99 on single-label classification with ResNet-50. Compared backbone freezing strategies, augmentation, dropout, and learning rates on the 21-class UC Merced dataset, tracking experiments with Weights & Biases.",
+    "challenges": [],
+    "skills": ["PyTorch", "Vision Transformer", "ResNet-50", "Transfer Learning", "Hugging Face", "Weights & Biases"],
+    "links": [
+      { "label": "View Repository →", "url": "https://github.com/sstaheli52/Deep-learning-land-use-classification" }
+    ]
+  },
+  {
+    "id": "bsc-thesis",
+    "title": "Evaluation of Rainfall Sources over Czechia for Major Flood Events",
+    "course": "BSc Thesis",
+    "year": "2025",
+    "image": null,
+    "description": "Attributed moisture sources for the 1997 Czech flood by applying the HAMSTER bias-correction framework to FLEXPART simulations of 10 million air parcels driven by ERA5 reanalysis data. Found that land sources supplied over 90% of flood moisture on 67% of days, highlighting the role of continental moisture transport. Spatial analysis and mapping performed in QGIS, with climate data processing in CDO and R.",
+    "challenges": [],
+    "skills": ["FLEXPART", "HAMSTER", "ERA5", "CDO", "R", "QGIS", "Hydrology"],
+    "links": [
+      { "label": "Link coming soon", "url": null }
+    ]
+  },
+  {
+    "id": "lahaina-wildfire",
+    "title": "Lahaina Wildfire Burn Severity — Hawaii",
+    "course": "Remote Sensing",
+    "year": "2024",
+    "image": null,
+    "description": "Assessed burn severity and vegetation health for the 2023 Lahaina wildfire in Hawaii by applying NDVI, NBR, and MNDWI spectral indices to pre- and post-fire Sentinel-2 imagery in ArcGIS Pro. Generated burn severity maps highlighting the spatial extent of vegetation loss and the differential impact across land cover types.",
+    "challenges": [],
+    "skills": ["Sentinel-2", "ArcGIS Pro", "NDVI", "NBR", "MNDWI", "Burn Severity"],
+    "links": [
+      { "label": "Link coming soon", "url": null }
+    ]
+  }
+]
