@@ -51,10 +51,21 @@
     .attr('fill', 'none').attr('stroke', '#a8d4f0').attr('stroke-width', 0.6).attr('d', path);
   var landPath = svg.append('path')
     .attr('fill', '#93AB9F').attr('stroke', '#7a9490').attr('stroke-width', 0.5);
+  var satG  = svg.append('g'); // satellite layer — below dots
   var dotsG = svg.append('g');
 
   // NL dot references (set after fetch)
   var nlGlowEl = null, nlMainEl = null;
+
+  // Satellite state
+  var satT = 0;
+  var satDotEl = null, satLabelEl = null, satOrbitEl = null;
+  var SAT_INC = 51.6;        // ISS orbital inclination (degrees)
+  var SAT_SPEED = 1 / 1500;  // ~25 s per orbit at 60 fps
+
+  function getSatCoords(t) {
+    return [((t * 360) % 360) - 180, SAT_INC * Math.sin(t * 2 * Math.PI)];
+  }
 
   function isVisible(coords) {
     var rot = projection.rotate();
@@ -84,6 +95,19 @@
       var vNl = isVisible(nlPoint.coords);
       nlGlowEl.attr('cx', pNl[0]).attr('cy', pNl[1]).attr('display', vNl ? null : 'none');
       nlMainEl.attr('cx', pNl[0]).attr('cy', pNl[1]).attr('display', vNl ? null : 'none');
+    }
+    if (satDotEl) {
+      var sc = getSatCoords(satT);
+      var sp = projection(sc);
+      var sv = isVisible(sc);
+      satOrbitEl.attr('d', path);
+      satDotEl.attr('cx', sp[0]).attr('cy', sp[1]).attr('display', sv ? null : 'none');
+      var satLeft = sp[0] > W * 0.78;
+      satLabelEl
+        .attr('x', sp[0] + (satLeft ? -8 : 8))
+        .attr('y', sp[1] - 7)
+        .attr('text-anchor', satLeft ? 'end' : 'start')
+        .attr('display', sv ? null : 'none');
     }
   }
 
@@ -143,13 +167,14 @@
     })
     .on('mouseup.globe', function() { dragOrigin = null; svg.classed('dragging', false); });
 
-  // Auto-spin — pauses while dragging or hovering a dot
+  // Auto-spin — globe pauses while dragging or hovering, satellite always moves
   (function spinLoop() {
+    satT = (satT + SAT_SPEED) % 1;
     if (!dragOrigin && !hovering) {
       var rot = projection.rotate();
       projection.rotate([rot[0] + 0.08, rot[1], rot[2]]);
-      redraw();
     }
+    redraw();
     requestAnimationFrame(spinLoop);
   })();
 
@@ -266,5 +291,46 @@
           posTooltip(event, html, true);
         })
         .on('mouseleave', dotLeave);
+
+      // — GEDI / ISS satellite —
+      var orbitCoords = [];
+      for (var oi = 0; oi <= 200; oi++) {
+        var ott = oi / 200;
+        orbitCoords.push([((ott * 360) % 360) - 180, SAT_INC * Math.sin(ott * 2 * Math.PI)]);
+      }
+      satOrbitEl = satG.append('path')
+        .datum({ type: 'LineString', coordinates: orbitCoords })
+        .attr('fill', 'none')
+        .attr('stroke', '#7ab8d4')
+        .attr('stroke-width', 0.8)
+        .attr('stroke-dasharray', '3 3')
+        .attr('opacity', 0.5)
+        .attr('d', path);
+
+      var sc0 = getSatCoords(satT);
+      var sp0 = projection(sc0);
+      satDotEl = satG.append('circle')
+        .attr('r', 4)
+        .attr('fill', '#e0f0ff')
+        .attr('stroke', '#7ab8d4')
+        .attr('stroke-width', 1.5)
+        .attr('pointer-events', 'none')
+        .attr('cx', sp0[0]).attr('cy', sp0[1])
+        .attr('display', isVisible(sc0) ? null : 'none');
+
+      satLabelEl = satG.append('text')
+        .text('GEDI / ISS')
+        .attr('font-size', '8.5px')
+        .attr('font-family', 'Inter, sans-serif')
+        .attr('font-weight', '500')
+        .attr('fill', '#a0d4ef')
+        .style('paint-order', 'stroke')
+        .attr('stroke', 'rgba(13,21,38,0.9)')
+        .attr('stroke-width', '2.5px')
+        .attr('stroke-linejoin', 'round')
+        .attr('pointer-events', 'none')
+        .attr('x', sp0[0] + 8).attr('y', sp0[1] - 7)
+        .attr('text-anchor', 'start')
+        .attr('display', isVisible(sc0) ? null : 'none');
     });
 })();
