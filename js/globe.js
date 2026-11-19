@@ -59,12 +59,20 @@
 
   // Satellite state
   var satT = 0;
-  var satDotEl = null, satLabelEl = null, satOrbitEl = null;
+  var satDotEl = null, satLabelEl = null, satOrbitEl = null, satNadirEl = null;
   var SAT_INC = 51.6;        // ISS orbital inclination (degrees)
   var SAT_SPEED = 1 / 1500;  // ~25 s per orbit at 60 fps
+  var SAT_OFFSET = 22;       // pixels above globe surface
 
   function getSatCoords(t) {
     return [((t * 360) % 360) - 180, SAT_INC * Math.sin(t * 2 * Math.PI)];
+  }
+
+  // Push a projected [px, py] radially outward from globe center by `offset` pixels
+  function radialPush(px, py, offset) {
+    var dx = px - W / 2, dy = py - H / 2;
+    var dist = Math.sqrt(dx * dx + dy * dy) || 1;
+    return [px + (dx / dist) * offset, py + (dy / dist) * offset];
   }
 
   function isVisible(coords) {
@@ -100,12 +108,15 @@
       var sc = getSatCoords(satT);
       var sp = projection(sc);
       var sv = isVisible(sc);
+      var spo = radialPush(sp[0], sp[1], SAT_OFFSET); // offset position
       satOrbitEl.attr('d', path);
-      satDotEl.attr('cx', sp[0]).attr('cy', sp[1]).attr('display', sv ? null : 'none');
-      var satLeft = sp[0] > W * 0.78;
+      satNadirEl.attr('x1', sp[0]).attr('y1', sp[1]).attr('x2', spo[0]).attr('y2', spo[1])
+        .attr('display', sv ? null : 'none');
+      satDotEl.attr('cx', spo[0]).attr('cy', spo[1]).attr('display', sv ? null : 'none');
+      var satLeft = spo[0] > W * 0.78;
       satLabelEl
-        .attr('x', sp[0] + (satLeft ? -8 : 8))
-        .attr('y', sp[1] - 7)
+        .attr('x', spo[0] + (satLeft ? -8 : 8))
+        .attr('y', spo[1] - 7)
         .attr('text-anchor', satLeft ? 'end' : 'start')
         .attr('display', sv ? null : 'none');
     }
@@ -309,14 +320,23 @@
 
       var sc0 = getSatCoords(satT);
       var sp0 = projection(sc0);
+      var spo0 = radialPush(sp0[0], sp0[1], SAT_OFFSET);
+      var sv0 = isVisible(sc0);
+
+      satNadirEl = satG.append('line')
+        .attr('stroke', '#7ab8d4').attr('stroke-width', 0.8).attr('opacity', 0.6)
+        .attr('pointer-events', 'none')
+        .attr('x1', sp0[0]).attr('y1', sp0[1]).attr('x2', spo0[0]).attr('y2', spo0[1])
+        .attr('display', sv0 ? null : 'none');
+
       satDotEl = satG.append('circle')
         .attr('r', 4)
         .attr('fill', '#e0f0ff')
         .attr('stroke', '#7ab8d4')
         .attr('stroke-width', 1.5)
         .attr('pointer-events', 'none')
-        .attr('cx', sp0[0]).attr('cy', sp0[1])
-        .attr('display', isVisible(sc0) ? null : 'none');
+        .attr('cx', spo0[0]).attr('cy', spo0[1])
+        .attr('display', sv0 ? null : 'none');
 
       satLabelEl = satG.append('text')
         .text('GEDI / ISS')
@@ -329,8 +349,8 @@
         .attr('stroke-width', '2.5px')
         .attr('stroke-linejoin', 'round')
         .attr('pointer-events', 'none')
-        .attr('x', sp0[0] + 8).attr('y', sp0[1] - 7)
+        .attr('x', spo0[0] + 8).attr('y', spo0[1] - 7)
         .attr('text-anchor', 'start')
-        .attr('display', isVisible(sc0) ? null : 'none');
+        .attr('display', sv0 ? null : 'none');
     });
 })();
